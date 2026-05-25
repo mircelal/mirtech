@@ -1,0 +1,21 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Müraciət məlumatları (şəxsi data)
+data/leads.json
+
+# Yüklənmiş layihə şəkilləri (serverdə saxlanır)
+uploads/projects/*
+!uploads/projects/.htaccess
+
+# Lokal konfiqurasiya (gələcək)
+config.local.php
+.env

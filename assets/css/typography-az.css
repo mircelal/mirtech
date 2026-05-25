@@ -1,0 +1,31 @@
+/* Azərbaycan əlifbası: ə ş ç ğ ö ü ı — oxunaqlıq tənzimləmələri */
+
+.lang-az,
+html[lang="az"]{
+  quotes:"«""»""„""";
+}
+
+/* Kiçik caps və diakritiklər üçün bir az daha geniş sətir */
+p,.hero-lead,.page-lead,.proj-desc,.proj-overview,.panel-hint{
+  line-height:1.7;
+  max-width:68ch;
+}
+
+/* Başlıqlarda sıx letter-spacing AZ hərflərini kəsə bilər */
+@media(min-width:768px){
+  h1{line-height:1.12}
+  h2{line-height:1.2}
+}
+
+/* Test: əlifba nümunəsi (dev üçün gizli saxlanıla bilər) */
+.font-preview-az{
+  font-size:1.125rem;
+  color:var(--muted);
+  letter-spacing:.02em;
+}
+.font-preview-az::after{
+  content:"Aya şəkilləri — çörək, göyərti, işıq.";
+  display:block;
+  margin-top:.5rem;
+  color:var(--head);
+}

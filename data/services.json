@@ -1,0 +1,62 @@
+[
+    {
+        "id": 1,
+        "title": "Veb & E-Ticarət",
+        "desc": "WordPress, DLE, Laravel, Vue — korporativ sayt, portal, e-ticarət.",
+        "price": "₼650-dan",
+        "icon": "fa-cart-shopping",
+        "color": "blue",
+        "sort": 1,
+        "featured": true
+    },
+    {
+        "id": 2,
+        "title": "Mobil Tətbiqlər",
+        "desc": "Android, iOS, Flutter — native performans, müasir UI.",
+        "price": "₼1200-dan",
+        "icon": "fa-mobile-screen-button",
+        "color": "teal",
+        "sort": 2,
+        "featured": true
+    },
+    {
+        "id": 3,
+        "title": "ERP \/ CRM",
+        "desc": "Anbar, mühasibat, HR, satış — tam müəssisə idarəetməsi.",
+        "price": "₼2000-dan",
+        "icon": "fa-gears",
+        "color": "amber",
+        "sort": 3,
+        "featured": true
+    },
+    {
+        "id": 4,
+        "title": "Bulud & Server",
+        "desc": "AWS, S3, Google Cloud, Cloudflare, Proxmox, Nextcloud, Linux server.",
+        "price": "Müqavilə",
+        "icon": "fa-cloud",
+        "color": "purple",
+        "sort": 4,
+        "featured": true
+    },
+    {
+        "id": 5,
+        "title": "Desktop & Sistem",
+        "desc": "C++, Kotlin, Python — xüsusi proqramlar və inteqrasiyalar.",
+        "price": "Müqavilə",
+        "icon": "fa-desktop",
+        "color": "teal",
+        "sort": 5,
+        "featured": false
+    },
+    {
+        "id": 6,
+        "title": "Dizayn & UX",
+        "desc": "Tailwind, Figma, HyperOS tipli müasir interfeyslər.",
+        "price": "₼300-dan",
+        "icon": "fa-palette",
+        "color": "gold",
+        "sort": 6,
+        "featured": false
+    }
+]

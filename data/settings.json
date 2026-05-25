@@ -1,0 +1,55 @@
+{
+  "site_name": "MirTech",
+  "tagline": "Professional Texnologiya Həlləri",
+  "hero_eyebrow": "15 illik texnologiya şirkəti",
+  "hero_title": "Biznesiniz üçün",
+  "hero_title_highlight": "Güclü Rəqəmsal Sistemlər",
+  "hero_subtitle": "WordPress, Laravel, AWS, Cloudflare, AI inteqrasiyası — veb, bulud, mobil və server. 2010-cu ildən Azərbaycanda.",
+  "stats": [
+    {"value": "150", "suffix": "+", "label": "Tamamlanmış layihə", "color": "blue"},
+    {"value": "15", "suffix": "+", "label": "İl təcrübə", "color": "teal"},
+    {"value": "98", "suffix": "%", "label": "Məmnun müştəri", "color": "amber"},
+    {"value": "24", "suffix": "/7", "label": "Texniki dəstək", "color": "purple"}
+  ],
+  "why": [
+    {"icon": "fa-award", "color": "blue", "title": "15+ İl Təcrübə", "desc": "2010-cu ildən bəri Azərbaycanda proqram təminatı və infrastruktur."},
+    {"icon": "fa-code", "color": "teal", "title": "Full Stack", "desc": "Web, mobil, ERP, bulud — bir komanda, tam həll."},
+    {"icon": "fa-mobile-screen", "color": "amber", "title": "Mobil Birinci", "desc": "Android, iOS, Flutter — native və cross-platform."},
+    {"icon": "fa-server", "color": "purple", "title": "Bulud & Server", "desc": "Proxmox, Nextcloud, Linux, Windows — öz mərkəzlərimizdə."},
+    {"icon": "fa-shield-halved", "color": "teal", "title": "Təhlükəsizlik", "desc": "SSL, backup, 2FA və müasir təhlükəsizlik standartları."},
+    {"icon": "fa-comments", "color": "gold", "title": "Pulsuz Məsləhət", "desc": "İdeyanızı danışın — əvvəlcə məsləhət, sonra qərar."}
+  ],
+  "included": [
+    "Pulsuz hosting (1 il)",
+    "Pulsuz domain",
+    "Korporativ email",
+    "Mobil uyumlu dizayn",
+    "SEO hazırlığı",
+    "24/7 texniki dəstək",
+    "Pulsuz konsultasiya"
+  ],
+  "contact": {
+    "whatsapp": "+994 70 723 21 28",
+    "whatsapp_raw": "994707232128",
+    "email": "info@mirtech.az",
+    "website": "mirtech.az",
+    "website_url": "https://mirtech.az"
+  },
+  "footer_year": 2026,
+  "homepage": {
+    "projects_limit": 6,
+    "technologies_limit": 10,
+    "services_limit": 4
+  },
+  "smtp": {
+    "enabled": false,
+    "host": "smtp.gmail.com",
+    "port": 587,
+    "encryption": "tls",
+    "username": "",
+    "password": "",
+    "from_email": "",
+    "from_name": "MirTech",
+    "notify_email": "info@mirtech.az"
+  }
+}
