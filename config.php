@@ -7,6 +7,7 @@ define('ROOT_PATH', __DIR__);
 
 require_once __DIR__ . '/includes/tech-icon.php';
 require_once __DIR__ . '/includes/mail.php';
+require_once __DIR__ . '/includes/lead-format.php';
 
 function baseUrl(): string
 {

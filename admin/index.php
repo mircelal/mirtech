@@ -31,7 +31,7 @@ require '_layout.php';
     <?php foreach (array_slice($leads, 0, 8) as $lead): ?>
       <tr>
         <td><?= htmlspecialchars($lead['created_at'] ?? '') ?></td>
-        <td><?= htmlspecialchars($lead['name'] ?? '') ?></td>
+        <td><a href="leads.php?id=<?= (int)($lead['id'] ?? 0) ?>" class="adm-lead-link"><?= htmlspecialchars($lead['name'] ?? '') ?></a></td>
         <td><?= htmlspecialchars($lead['phone'] ?? '') ?></td>
         <td><?= htmlspecialchars($lead['total'] ?? '') ?></td>
       </tr>
