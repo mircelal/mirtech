@@ -334,7 +334,7 @@ function siteContact(): array
 
 function projectUrl(array $project): string
 {
-    return url('project.php?id=' . (int)($project['id'] ?? 0));
+    return routesBuildUrl('project', ['id' => (int)($project['id'] ?? 0)]);
 }
 
 function getProjectById(int $id): ?array

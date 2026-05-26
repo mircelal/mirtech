@@ -12,6 +12,13 @@ Options -Indexes
     # Artıq public/ altındadırsa toxunma
     RewriteRule ^public/ - [L]
 
+    # Dil prefiksi (docroot layihə kökündədirsə — birbaşa public/*.php)
+    RewriteRule ^(en|es)/?$ public/index.php?lang=$1 [L,QSA]
+    RewriteRule ^(en|es)/projects/?$ public/projects.php?lang=$1 [L,QSA]
+    RewriteRule ^(en|es)/technologies/?$ public/technologies.php?lang=$1 [L,QSA]
+    RewriteRule ^(en|es)/calculator/?$ public/calculator.php?lang=$1 [L,QSA]
+    RewriteRule ^(en|es)/project/([0-9]+)(?:-[a-z0-9-]+)?/?$ public/project.php?id=$2&lang=$1 [L,QSA]
+
     # Təmiz URL → public/ faylı
     RewriteRule ^$ public/ [L]
     RewriteRule ^(.+)$ public/$1 [L]

@@ -18,18 +18,22 @@ function isAdminRequest(): bool
 function readLanguagesMeta(): array
 {
     static $meta = null;
-    if ($meta !== null) {
+    static $loadedMtime = null;
+    $path = DATA_PATH . '/languages.json';
+    $mtime = is_file($path) ? (int)filemtime($path) : 0;
+    if ($meta !== null && $loadedMtime === $mtime) {
         return $meta;
     }
-    $path = DATA_PATH . '/languages.json';
     if (!is_file($path)) {
         $meta = [
             ['code' => 'en', 'name' => 'English', 'native' => 'English', 'enabled' => true, 'default' => true],
         ];
+        $loadedMtime = $mtime;
         return $meta;
     }
     $raw = json_decode(file_get_contents($path) ?: '[]', true);
     $meta = is_array($raw) ? $raw : [];
+    $loadedMtime = $mtime;
     return $meta;
 }
 
@@ -67,7 +71,9 @@ function initLang(): void
         return;
     }
 
+    $parsed = routesParseRequest();
     $lang = null;
+
     if (!empty($_GET['lang']) && is_string($_GET['lang'])) {
         $candidate = strtolower(trim($_GET['lang']));
         if (isValidLang($candidate)) {
@@ -75,18 +81,17 @@ function initLang(): void
             $_SESSION['site_lang'] = $lang;
         }
     }
+    if ($lang === null && $parsed['langFromPath'] !== null) {
+        $lang = $parsed['langFromPath'];
+        $_SESSION['site_lang'] = $lang;
+    }
+    // Default dil URL-də prefiks yoxdur (/projects) — admin default; brauzer Accept-Language yox
+    if ($lang === null && $parsed['langFromPath'] === null && !isset($_GET['lang'])) {
+        $lang = defaultLang();
+        $_SESSION['site_lang'] = $lang;
+    }
     if ($lang === null && !empty($_SESSION['site_lang']) && isValidLang((string)$_SESSION['site_lang'])) {
         $lang = (string)$_SESSION['site_lang'];
-    }
-    if ($lang === null && !empty($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
-        $accepted = explode(',', $_SERVER['HTTP_ACCEPT_LANGUAGE']);
-        foreach ($accepted as $part) {
-            $code = strtolower(substr(trim(explode(';', $part)[0]), 0, 2));
-            if (isValidLang($code)) {
-                $lang = $code;
-                break;
-            }
-        }
     }
     if ($lang === null) {
         $lang = defaultLang();
@@ -208,59 +213,31 @@ function siteUrl(string $path = '', ?string $lang = null): string
     return queryUrl($path, [], $lang);
 }
 
-/** URL with query string; merges lang when not default. */
+/** URL with query string; SEO-friendly path (/projects, /project/1-slug, /en/...). */
 function queryUrl(string $path, array $params = [], ?string $lang = null): string
 {
-    $base = baseUrl();
-    $path = ltrim($path, '/');
-    $url = $path === '' ? ($base === '' ? '/' : $base . '/') : $base . '/' . $path;
-    $lang = $lang ?? currentLang();
-    if ($lang !== defaultLang()) {
-        $params['lang'] = $lang;
+    if (preg_match('#^project\.php$#i', ltrim($path, '/')) || $path === 'project') {
+        $id = (int)($params['id'] ?? $_GET['id'] ?? 0);
+        if ($id > 0) {
+            return routesBuildUrl('project', array_merge(['id' => $id], $params), $lang);
+        }
     }
-    if ($params !== []) {
-        $url .= (str_contains($url, '?') ? '&' : '?') . http_build_query($params);
-    }
-    return $url;
+    return routesBuildUrl($path, $params, $lang);
 }
 
 function langUrl(string $targetLang, ?string $path = null): string
 {
     if ($path === null) {
-        $uri = $_SERVER['REQUEST_URI'] ?? '/';
-        $path = normalizeWebPath(parse_url($uri, PHP_URL_PATH) ?: '/');
-        if (defined('ROOT_PATH')) {
-            $doc = rtrim(str_replace('\\', '/', $_SERVER['DOCUMENT_ROOT'] ?? ''), '/');
-            $root = rtrim(str_replace('\\', '/', ROOT_PATH), '/');
-            $public = rtrim(str_replace('\\', '/', PUBLIC_PATH), '/');
-            if ($doc !== '' && $doc !== $root && $doc !== $public && str_starts_with($root, $doc . '/')) {
-                $prefix = rtrim(substr($root, strlen($doc)), '/');
-                if ($prefix !== '' && str_starts_with($path, $prefix)) {
-                    $path = substr($path, strlen($prefix)) ?: '/';
-                }
-            }
-        }
-        $path = ltrim($path, '/');
-        $query = [];
-        parse_str(parse_url($uri, PHP_URL_QUERY) ?? '', $query);
-        unset($query['lang']);
-        if ($query) {
-            $path .= '?' . http_build_query($query);
-        }
+        $req = routesParseRequest();
+        return routesBuildUrl($req['route'], $req['params'], $targetLang);
     }
-    $base = baseUrl();
-    $full = $path === '' ? ($base === '' ? '/' : $base . '/') : $base . '/' . ltrim($path, '/');
-    if ($targetLang === defaultLang()) {
-        if (str_contains($full, '?')) {
-            $parts = explode('?', $full, 2);
-            parse_str($parts[1], $q);
-            unset($q['lang']);
-            return $parts[0] . ($q ? '?' . http_build_query($q) : '');
-        }
-        return $full;
+    if (str_contains($path, '?')) {
+        [$p, $qs] = explode('?', $path, 2);
+        $params = [];
+        parse_str($qs, $params);
+        return routesBuildUrl($p, $params, $targetLang);
     }
-    $sep = str_contains($full, '?') ? '&' : '?';
-    return $full . $sep . 'lang=' . rawurlencode($targetLang);
+    return routesBuildUrl($path, [], $targetLang);
 }
 
 function getSettingsLocalized(?string $lang = null): array
@@ -330,12 +307,7 @@ function hreflangLinks(): string
             $path = substr($path, strlen($prefix)) ?: '/';
         }
     }
-    $rel = ltrim($path, '/');
-    $query = [];
-    parse_str(parse_url($uri, PHP_URL_QUERY) ?? '', $query);
-    unset($query['lang']);
-    $qs = $query ? '?' . http_build_query($query) : '';
-    $relPath = $rel . $qs;
+    $req = routesParseRequest();
 
     $html = '';
     foreach (enabledLangs() as $l) {
@@ -343,10 +315,10 @@ function hreflangLinks(): string
         if ($code === '') {
             continue;
         }
-        $href = absoluteUrl($rel, $code);
+        $href = absoluteUrl(routesBuildUrl($req['route'], $req['params'], $code));
         $html .= '<link rel="alternate" hreflang="' . htmlspecialchars($code) . '" href="' . htmlspecialchars($href) . '">' . "\n";
     }
-    $html .= '<link rel="alternate" hreflang="x-default" href="' . htmlspecialchars(absoluteUrl($rel, defaultLang())) . '">';
+    $html .= '<link rel="alternate" hreflang="x-default" href="' . htmlspecialchars(absoluteUrl(routesBuildUrl($req['route'], $req['params'], defaultLang()))) . '">';
     return $html;
 }
 

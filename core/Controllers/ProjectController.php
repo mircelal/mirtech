@@ -24,6 +24,8 @@ class ProjectController extends BaseController
             return;
         }
 
+        routesRedirectCanonicalProject($project);
+
         $data = [
             'project' => $project,
             'techs' => resolveProjectTechnologies($project),

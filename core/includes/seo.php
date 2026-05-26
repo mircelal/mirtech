@@ -57,7 +57,14 @@ function siteOrigin(): string
 /** Tam URL (canonical, OG, sitemap). */
 function absoluteUrl(string $path = '', ?string $lang = null): string
 {
-    $rel = $path === '' ? siteUrl('', $lang) : siteUrl($path, $lang);
+    if ($path === '' && func_num_args() >= 1) {
+        $req = routesParseRequest();
+        $rel = routesBuildUrl($req['route'], $req['params'], $lang);
+    } elseif (preg_match('#^https?://#i', $path)) {
+        return $path;
+    } else {
+        $rel = routesBuildUrl($path, [], $lang);
+    }
     if (preg_match('#^https?://#i', $rel)) {
         return $rel;
     }
@@ -94,10 +101,12 @@ function seoPathForPage(string $pageType, array $vars): string
 {
     return match ($pageType) {
         'home' => '',
-        'projects' => 'projects.php',
-        'technologies' => 'technologies.php',
-        'calculator' => 'calculator.php',
-        'project' => 'project.php?id=' . (int)($vars['project']['id'] ?? $_GET['id'] ?? 0),
+        'projects' => 'projects',
+        'technologies' => 'technologies',
+        'calculator' => 'calculator',
+        'project' => !empty($vars['project'])
+            ? projectUrlPath($vars['project'])
+            : ('project/' . (int)($vars['project']['id'] ?? $_GET['id'] ?? 0)),
         default => ltrim(str_replace('\\', '/', parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: ''), '/'),
     };
 }
@@ -205,18 +214,18 @@ function seoBreadcrumbs(string $pageType, array $vars, string $lang): array
         ['name' => t('nav.home'), 'url' => absoluteUrl('', $lang)],
     ];
     if ($pageType === 'projects' || $pageType === 'project' || $pageType === 'error') {
-        $items[] = ['name' => t('nav.projects'), 'url' => absoluteUrl('projects.php', $lang)];
+        $items[] = ['name' => t('nav.projects'), 'url' => absoluteUrl('projects', $lang)];
     }
     if ($pageType === 'technologies') {
-        $items[] = ['name' => t('nav.tech'), 'url' => absoluteUrl('technologies.php', $lang)];
+        $items[] = ['name' => t('nav.tech'), 'url' => absoluteUrl('technologies', $lang)];
     }
     if ($pageType === 'calculator') {
-        $items[] = ['name' => t('nav.calculator'), 'url' => absoluteUrl('calculator.php', $lang)];
+        $items[] = ['name' => t('nav.calculator'), 'url' => absoluteUrl('calculator', $lang)];
     }
     if ($pageType === 'project' && !empty($vars['pName'])) {
         $items[] = [
             'name' => (string)$vars['pName'],
-            'url' => absoluteUrl('project.php?id=' . (int)($vars['project']['id'] ?? 0), $lang),
+            'url' => absoluteUrl(projectUrlPath($vars['project']), $lang),
         ];
     }
     return $items;
@@ -271,7 +280,7 @@ function seoWebSiteSchema(): array
             '@type' => 'SearchAction',
             'target' => [
                 '@type' => 'EntryPoint',
-                'urlTemplate' => absoluteUrl('projects.php') . '?q={search_term_string}',
+                'urlTemplate' => absoluteUrl('projects') . '?q={search_term_string}',
             ],
             'query-input' => 'required name=search_term_string',
         ],
@@ -374,9 +383,9 @@ function generateSitemapXml(): string
     $urls = [];
     $static = [
         '' => ['priority' => '1.0', 'changefreq' => 'weekly'],
-        'projects.php' => ['priority' => '0.9', 'changefreq' => 'weekly'],
-        'technologies.php' => ['priority' => '0.8', 'changefreq' => 'monthly'],
-        'calculator.php' => ['priority' => '0.8', 'changefreq' => 'monthly'],
+        'projects' => ['priority' => '0.9', 'changefreq' => 'weekly'],
+        'technologies' => ['priority' => '0.8', 'changefreq' => 'monthly'],
+        'calculator' => ['priority' => '0.8', 'changefreq' => 'monthly'],
     ];
 
     foreach ($static as $path => $meta) {
@@ -389,7 +398,7 @@ function generateSitemapXml(): string
             continue;
         }
         $urls[] = [
-            'path' => 'project.php?id=' . $id,
+            'path' => projectUrlPath($p),
             'meta' => ['priority' => '0.7', 'changefreq' => 'monthly'],
             'lastmod' => !empty($p['year']) ? $p['year'] . '-06-01' : null,
         ];
@@ -403,7 +412,7 @@ function generateSitemapXml(): string
 
     foreach ($urls as $entry) {
         $path = $entry['path'];
-        $loc = absoluteUrl($path, $def);
+        $loc = absoluteUrl(routesBuildUrl($path, [], $def));
         $xml .= "  <url>\n";
         $xml .= '    <loc>' . htmlspecialchars($loc, ENT_XML1) . "</loc>\n";
         if (!empty($entry['lastmod'])) {
@@ -417,10 +426,10 @@ function generateSitemapXml(): string
             if ($code === '') {
                 continue;
             }
-            $href = absoluteUrl($path, $code);
+            $href = absoluteUrl(routesBuildUrl($path, [], $code));
             $xml .= '    <xhtml:link rel="alternate" hreflang="' . htmlspecialchars($code, ENT_XML1) . '" href="' . htmlspecialchars($href, ENT_XML1) . "\" />\n";
         }
-        $xml .= '    <xhtml:link rel="alternate" hreflang="x-default" href="' . htmlspecialchars(absoluteUrl($path, $def), ENT_XML1) . "\" />\n";
+        $xml .= '    <xhtml:link rel="alternate" hreflang="x-default" href="' . htmlspecialchars(absoluteUrl(routesBuildUrl($path, [], $def)), ENT_XML1) . "\" />\n";
         $xml .= "  </url>\n";
     }
 

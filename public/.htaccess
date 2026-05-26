@@ -1,8 +1,42 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
-    RewriteRule ^uploads/.*\.php$ - [F,L]
+    # RewriteBase / istifadə etməyin: docroot layihə kökündə olanda /en → /index.php?lang=en
+    # (kök) və index.php → /?lang=en döngüsü yaranır. Nisbi yollar public/ kontekstində qalır.
+
+    # Köhnə .php URL → təmiz URL (301); yalnız brauzer birbaşa .php istəyəndə (daxili rewrite deyil)
+    RewriteCond %{THE_REQUEST} \s/+index\.php[\s?] [NC]
+    RewriteRule ^index\.php$ / [R=301,L]
+    RewriteCond %{THE_REQUEST} \s/+projects\.php[\s?] [NC]
+    RewriteRule ^projects\.php$ /projects [R=301,L,QSA]
+    RewriteCond %{THE_REQUEST} \s/+technologies\.php[\s?] [NC]
+    RewriteRule ^technologies\.php$ /technologies [R=301,L,QSA]
+    RewriteCond %{THE_REQUEST} \s/+calculator\.php[\s?] [NC]
+    RewriteRule ^calculator\.php$ /calculator [R=301,L,QSA]
+    RewriteCond %{THE_REQUEST} \s/+project\.php[\s?] [NC]
+    RewriteCond %{QUERY_STRING} (^|&)id=([0-9]+)(&|$)
+    RewriteRule ^project\.php$ /project/%2? [R=301,L]
+
+    # Statik fayllar və mövcud qovluqlar
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+
+    # Dil prefiksi (default AZ prefiksiz)
+    RewriteRule ^(en|es)/projects/?$ projects.php?lang=$1 [L,QSA]
+    RewriteRule ^(en|es)/technologies/?$ technologies.php?lang=$1 [L,QSA]
+    RewriteRule ^(en|es)/calculator/?$ calculator.php?lang=$1 [L,QSA]
+    RewriteRule ^(en|es)/project/([0-9]+)(?:-[a-z0-9-]+)?/?$ project.php?id=$2&lang=$1 [L,QSA]
+    RewriteRule ^(en|es)/?$ index.php?lang=$1 [L,QSA]
+
+    # Təmiz URL → PHP
+    RewriteRule ^projects/?$ projects.php [L,QSA]
+    RewriteRule ^technologies/?$ technologies.php [L,QSA]
+    RewriteRule ^calculator/?$ calculator.php [L,QSA]
+    RewriteRule ^project/([0-9]+)(?:-[a-z0-9-]+)?/?$ project.php?id=$1 [L,QSA]
+
     RewriteRule ^sitemap\.xml$ sitemap.php [L]
     RewriteRule ^robots\.txt$ robots.php [L]
+    RewriteRule ^uploads/.*\.php$ - [F,L]
 </IfModule>
 
 # Sıxılma (PageSpeed / LCP)

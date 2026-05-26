@@ -178,6 +178,21 @@ Creates `.bak-translate-*` backups. Edit fine-tuning per language in **Admin →
 
 ---
 
+## SEO URL-lər (təmiz linklər)
+
+| Köhnə | Yeni |
+|-------|------|
+| `/index.php` | `/` |
+| `/projects.php` | `/projects` |
+| `/project.php?id=12` | `/project/12-layihe-slug` |
+| `/technologies.php` | `/technologies` |
+| `/calculator.php` | `/calculator` |
+| `?lang=en` | `/en/projects` (default **az** prefiksiz) |
+
+Köhnə `.php` linkləri avtomatik **301** yönləndirmə ilə işləyir.
+
+---
+
 ## PageSpeed / performans
 
 - **Critical CSS** (hero + header) — ilk boyama tez

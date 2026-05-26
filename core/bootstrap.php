@@ -11,6 +11,7 @@ require CORE_PATH . '/includes/tech-icon.php';
 require CORE_PATH . '/includes/mail.php';
 require CORE_PATH . '/includes/lead-format.php';
 require CORE_PATH . '/includes/i18n.php';
+require CORE_PATH . '/includes/routes.php';
 require CORE_PATH . '/includes/seo.php';
 require CORE_PATH . '/includes/performance.php';
 
@@ -26,5 +27,7 @@ spl_autoload_register(static function (string $class): void {
 });
 
 if (!isAdminRequest()) {
+    routesApplyLangFromPath();
+    routesRedirectLegacy();
     initLang();
 }
