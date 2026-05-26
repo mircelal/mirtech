@@ -43,8 +43,8 @@ function url(string $path = ''): string
 define('DATA_PATH', ROOT_PATH . '/data');
 define('UPLOADS_PATH', ROOT_PATH . '/uploads/projects');
 
-// Admin şifrəsi: melek2015+
-define('ADMIN_PASSWORD_HASH', '$2y$10$1VPrWijONhJj6I9dCGiOYO0/TK5vUz3eFfIKhpjzaqJnzCp7VXD8O');
+// Default demo password: admin1234 — change in production (see README)
+define('ADMIN_PASSWORD_HASH', '$2y$10$6wtxHGRtDxZT.s2iWdqf8.B2MnMcRAIsLBy9/6GVhBeEztrYVP4sG');
 
 define('PROJECT_IMAGE_MAX_BYTES', 3 * 1024 * 1024);
 define('PROJECT_IMAGE_TYPES', ['image/jpeg', 'image/png', 'image/webp', 'image/gif']);

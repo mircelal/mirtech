@@ -1,150 +1,165 @@
-# MirTech — Korporativ veb sayt
+# MirTech — Open-source agency website (PHP)
 
-MirTech texnologiya şirkəti üçün hazırlanmış korporativ veb sayt: layihə portfeli, texnologiya stack-i, ağıllı qiymət kalkulyatoru və admin panel.
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![PHP](https://img.shields.io/badge/PHP-8.1%2B-777BB4?logo=php&logoColor=white)](https://www.php.net/)
+[![JSON CMS](https://img.shields.io/badge/CMS-JSON%20files-333)](data/)
 
-**Dil:** Azərbaycan (AZ)  
-**Stack:** PHP 8+, JSON data, vanilla JavaScript, CSS
+**Free, open-source corporate website template** for technology agencies and studios: portfolio, tech stack showcase, **smart price calculator**, admin panel, and lead capture (JSON + email).  
+Built with **plain PHP** (no framework required), vanilla JavaScript, and CSS — easy to host on Laragon, XAMPP, or any shared hosting.
 
----
-
-## Xüsusiyyətlər
-
-- **Ana səhifə** — hero, statistika, seçilmiş layihələr, texnologiyalar, xidmətlər
-- **Layihələr** — filtr, axtarış, layihə detalları (timeline, progress, statistika)
-- **Texnologiyalar** — kateqoriya və axtarış ilə 80+ texnologiya (Devicon ikonları)
-- **Qiymət kalkulyatoru** — veb, mobil, ERP, desktop, server; mobil native UX (app bar, bottom sheet)
-- **Admin panel** — layihə, xidmət, texnologiya, parametrlər, müraciətlər idarəetməsi
-- **Müraciət sistemi** — kalkulyator sorğuları panelə yazılır + email bildirişi (SMTP / PHP mail)
-- **Mobil optimizasiya** — bütün əsas səhifələr və admin panel
+**Languages:** Azerbaijani (AZ) UI out of the box · easy to translate via JSON  
+**Keywords:** php portfolio website, agency website template, project calculator, quote calculator, json cms php, laravel alternative lightweight, dev agency site, open source business website
 
 ---
 
-## Tələblər
+## Features
 
-- PHP **8.1+** (`json`, `mbstring`, `openssl` tövsiyə olunur)
-- Apache / Nginx (mod_rewrite optional)
-- Laragon, XAMPP və ya istənilən PHP host
+- **Homepage** — hero, stats, featured projects, technologies, services
+- **Projects** — filter, search, detail pages (timeline, progress, stats)
+- **Technologies** — 80+ tools with Devicon icons, categories, search
+- **Price calculator** — web, mobile, ERP, desktop, server; mobile-native UX (app bar, bottom sheet)
+- **Admin panel** — manage projects, services, technologies, settings, leads
+- **Lead system** — calculator submissions saved to JSON + email notification (SMTP / PHP `mail()`)
+- **Lead detail view** — full calculator choices in admin
+- **Mobile-friendly** — public site and admin panel
 
 ---
 
-## Quraşdırma
+## Requirements
+
+- PHP **8.1+** (`json`, `mbstring`, `openssl` recommended)
+- Apache or Nginx (optional `mod_rewrite`)
+- Laragon, XAMPP, or any PHP host
+
+---
+
+## Quick start
 
 ```bash
-# Repozitoriyanı klonlayın
 git clone https://github.com/mircelal/mirtech.git
 cd mirtech
-
-# Laragon: www/mirtech qovluğuna yerləşdirin
-# Virtual host: mirtech.local
-```
-
-1. Layihəni veb serverin `document root`-una (məs. `www/mirtech`) kopyalayın
-2. `data/leads.json` yaradın (və ya `data/leads.json.example`-dan kopyalayın):
-
-```bash
 cp data/leads.json.example data/leads.json
 ```
 
-3. Brauzerdə saytı açın: `http://mirtech.local/`
-4. **Admin şifrəsini dəyişin** — `config.php` faylında `ADMIN_PASSWORD_HASH`:
+1. Copy the project into your web root (e.g. `www/mirtech`)
+2. Open the site in your browser (e.g. `http://mirtech.local/`)
+3. **Admin:** `/admin/login.php`  
+   - Default password: **`admin1234`** (change before production!)
+4. Configure contact & SMTP under **Admin → Settings**
 
-```php
-php -r "echo password_hash('YENI_SIFRE', PASSWORD_BCRYPT);"
+Generate a new password hash:
+
+```bash
+php -r "echo password_hash('YOUR_PASSWORD', PASSWORD_BCRYPT);"
 ```
 
-5. Admin panel: `/admin/login.php`
+Put the result in `config.php` as `ADMIN_PASSWORD_HASH`.
 
 ---
 
-## Struktur
+## Project structure
 
 ```
 mirtech/
-├── index.php              # Ana səhifə
-├── projects.php           # Layihələr siyahısı
-├── project.php            # Layihə detalları
-├── technologies.php       # Texnologiyalar
-├── calculator.php         # Qiymət kalkulyatoru
-├── config.php             # Əsas konfiqurasiya və helper funksiyalar
-├── api/
-│   └── lead.php           # Kalkulyator sorğu API (POST JSON)
+├── index.php              # Homepage
+├── projects.php           # Project list
+├── project.php            # Project detail
+├── technologies.php       # Tech stack
+├── calculator.php         # Price calculator
+├── config.php             # Config & helpers
+├── api/lead.php           # Lead API (POST JSON)
 ├── admin/                 # Admin panel
-├── assets/css/            # site.css, typography-az.css
-├── assets/js/             # calculator.js, site.js
-├── data/                  # JSON məlumat bazası
+├── assets/css|js/         # Styles & scripts
+├── data/                  # JSON “database”
 │   ├── projects.json
 │   ├── technologies.json
 │   ├── services.json
 │   ├── settings.json
-│   └── leads.json         # gitignore — müraciətlər
-├── includes/              # header, footer, mail, tech-icon
-└── uploads/projects/      # Layihə şəkilləri
+│   └── leads.json         # gitignored (privacy)
+└── uploads/projects/      # Project images
 ```
 
 ---
 
 ## Admin panel
 
-| Bölmə | URL |
-|--------|-----|
-| Giriş | `/admin/login.php` |
-| Panel | `/admin/index.php` |
-| Layihələr | `/admin/projects.php` |
-| Xidmətlər | `/admin/services.php` |
-| Texnologiyalar | `/admin/technologies.php` |
-| Müraciətlər | `/admin/leads.php` |
-| Parametrlər (SMTP) | `/admin/settings.php` |
-
-Müraciətlər kalkulyator formundan avtomatik `data/leads.json`-a yazılır.
+| Section | URL |
+|---------|-----|
+| Login | `/admin/login.php` |
+| Dashboard | `/admin/index.php` |
+| Projects | `/admin/projects.php` |
+| Services | `/admin/services.php` |
+| Technologies | `/admin/technologies.php` |
+| Leads | `/admin/leads.php` |
+| Settings (SMTP, hero, …) | `/admin/settings.php` |
 
 ---
 
 ## Email (SMTP)
 
-Admin → **Parametrlər** → SMTP bölməsi:
+**Admin → Settings → Email / SMTP**
 
-- Host, port, TLS/SSL
-- İstifadəçi adı və şifrə
-- Bildiriş emaili (`notify_email`)
-
-SMTP aktiv deyilsə, sistem PHP `mail()` ilə fallback edir (server konfiqurasiyasından asılıdır).
-
-Test: `/admin/smtp-test.php`
+- SMTP host, port, TLS/SSL, credentials
+- Notification email for new calculator leads
+- Falls back to PHP `mail()` when SMTP is disabled  
+- Test: `/admin/smtp-test.php`
 
 ---
 
-## Kalkulyator sorğu axını
+## Calculator lead flow
 
-1. İstifadəçi kalkulyatorda məlumat doldurur → **Göndər**
-2. Sorğu `POST /api/lead.php` ilə saxlanılır
-3. Adminə email göndərilir (SMTP aktivdirsə)
-4. İstifadəçiyə **«Sorğu göndərildi»** + WhatsApp düyməsi göstərilir
-
----
-
-## Məlumat faylları
-
-Bütün məzmun JSON fayllarında saxlanılır (`data/`). Admin paneldən redaktə oluna bilər; birbaşa JSON redaktəsi də mümkündür.
-
-| Fayl | Məzmun |
-|------|--------|
-| `settings.json` | Sayt adı, hero, əlaqə, SMTP, statistika |
-| `projects.json` | Layihələr |
-| `technologies.json` | Texnologiya stack |
-| `services.json` | Xidmətlər |
-| `leads.json` | Kalkulyator müraciətləri (git-ə daxil deyil) |
+1. User submits the form → **Send**
+2. Lead stored via `POST /api/lead.php`
+3. Admin receives email (if SMTP is enabled)
+4. User sees **“Request sent”** + optional WhatsApp button
 
 ---
 
-## Təhlükəsizlik
+## JSON data files
 
-- Admin şifrəsini production-da mütləq dəyişin
-- `data/` qovluğu `.htaccess` ilə qorunur
-- `leads.json` repozitoriyaya daxil edilmir (şəxsi məlumat)
-- SMTP şifrəsini repoya commit etməyin
+| File | Content |
+|------|---------|
+| `settings.json` | Site name, hero, contact, SMTP, stats |
+| `projects.json` | Portfolio |
+| `technologies.json` | Tech stack |
+| `services.json` | Services |
+| `leads.json` | Leads (not in git — create from `.example`) |
 
 ---
 
-## Lisenziya
+## Security
 
-Proprietary — MirTech © 2026
+- Change the default admin password before going live
+- `data/` is protected via `.htaccess`
+- Do not commit `leads.json` (personal data) or SMTP passwords
+- Use HTTPS in production
+
+---
+
+## License — GPL-3.0 (copyleft)
+
+This project is **free and open source** under the [GNU General Public License v3.0](https://www.gnu.org/licenses/gpl-3.0.html) (GPL-3.0-or-later).
+
+**You may:**
+
+- Use it for personal or commercial projects
+- Modify and adapt it for your agency or clients
+- Share it with others
+
+**If you modify this software and distribute it** (including hosting a **modified** version for clients or the public), you **must** publish your **complete corresponding source code** under **GPL-3.0-or-later** (e.g. in a public Git repository). That way improvements stay available for everyone.
+
+See [LICENSE](LICENSE) for the full notice.
+
+---
+
+## Contributing
+
+Pull requests are welcome. By contributing, you agree that your changes will be licensed under GPL-3.0-or-later.
+
+**Demo / upstream:** [github.com/mircelal/mirtech](https://github.com/mircelal/mirtech)
+
+---
+
+## Author
+
+MirTech — technology solutions · [mirtech.az](https://mirtech.az)
