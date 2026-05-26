@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 require_once CORE_PATH . '/includes/admin-lang.php';
 require_once CORE_PATH . '/includes/admin-i18n-ui.php';
 requireAuth();
@@ -13,6 +13,7 @@ $projects = readJson('projects.json');
 usort($projects, fn($a, $b) => ($a['sort'] ?? 0) <=> ($b['sort'] ?? 0));
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    adminVerifyCsrf();
     $action = $_POST['action'] ?? '';
 
     if ($action === 'delete') {
@@ -176,6 +177,7 @@ require '_layout.php';
           <a href="../project.php?id=<?= (int)$p['id'] ?>" class="adm-btn adm-btn-ghost adm-btn-sm" target="_blank"><?= htmlspecialchars(at('common.view')) ?></a>
           <a href="?edit=<?= (int)$p['id'] ?>" class="adm-btn adm-btn-ghost adm-btn-sm"><?= htmlspecialchars(at('common.edit')) ?></a>
           <form method="post" class="adm-inline-form" onsubmit="return confirm('<?= htmlspecialchars(at('common.confirm_delete'), ENT_QUOTES) ?>')">
+            <?= adminCsrfField() ?>
             <input type="hidden" name="action" value="delete">
             <input type="hidden" name="id" value="<?= (int)$p['id'] ?>">
             <button type="submit" class="adm-btn adm-btn-danger adm-btn-sm"><?= htmlspecialchars(at('common.delete')) ?></button>

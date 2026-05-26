@@ -27,8 +27,8 @@ class ApiController
             $input = $_POST;
         }
 
-        $name = trim($input['name'] ?? '');
-        $phone = trim($input['phone'] ?? '');
+        $name = sanitizeLeadString((string)($input['name'] ?? ''), 120);
+        $phone = sanitizeLeadString((string)($input['phone'] ?? ''), 40);
 
         if ($name === '' || $phone === '') {
             self::jsonError('Ad və telefon tələb olunur', 400);
@@ -38,11 +38,11 @@ class ApiController
         $mailResult = saveLead([
             'name' => $name,
             'phone' => $phone,
-            'email' => trim($input['email'] ?? ''),
-            'note' => trim($input['note'] ?? ''),
-            'project_type' => trim($input['project_type'] ?? ''),
-            'total' => trim($input['total'] ?? ''),
-            'details' => $input['details'] ?? [],
+            'email' => sanitizeLeadString((string)($input['email'] ?? ''), 160),
+            'note' => sanitizeLeadString((string)($input['note'] ?? ''), 2000),
+            'project_type' => sanitizeLeadString((string)($input['project_type'] ?? ''), 200),
+            'total' => sanitizeLeadString((string)($input['total'] ?? ''), 80),
+            'details' => sanitizeLeadDetails($input['details'] ?? []),
         ]);
 
         echo json_encode([

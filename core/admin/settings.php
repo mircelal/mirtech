@@ -11,6 +11,7 @@ $message = '';
 $settings = readJson('settings.json');
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    adminVerifyCsrf();
     $settings['translations'] = adminSaveSettingsTranslations($_POST, $settings);
     $def = defaultLang();
     $block = $settings['translations'][$def] ?? [];
@@ -101,6 +102,7 @@ require '_layout.php';
 <?php if ($message): ?><div class="adm-alert adm-alert-ok"><?= htmlspecialchars($message) ?></div><?php endif; ?>
 
 <form class="adm-settings" method="post" id="settingsForm">
+    <?= adminCsrfField() ?>
   <nav class="adm-settings-tabs" aria-label="Parametr bölmələri">
     <button type="button" class="adm-settings-tab is-active" data-settings-tab="hero">
       <i class="fa-solid fa-house" aria-hidden="true"></i><span>Hero</span>
@@ -407,7 +409,12 @@ require '_layout.php';
       smtpResult.className = 'adm-smtp-result is-pending';
       smtpResult.textContent = 'Göndərilir... (əvvəlcə «Saxla» basın)';
       try {
-        var r = await fetch('smtp-test.php', { method: 'POST', credentials: 'same-origin' });
+        var csrf = document.querySelector('meta[name="csrf-token"]');
+        var r = await fetch('smtp-test.php', {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: csrf ? { 'X-CSRF-Token': csrf.content } : {}
+        });
         var data = await r.json();
         if (data.ok) {
           smtpResult.className = 'adm-smtp-result is-ok';

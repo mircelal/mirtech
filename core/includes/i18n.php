@@ -111,6 +111,10 @@ function currentLang(): string
 
 function loadLangPack(string $lang): void
 {
+    if (!isValidLang($lang)) {
+        $lang = defaultLang();
+    }
+    $lang = preg_replace('/[^a-z]/', '', strtolower($lang));
     $path = DATA_PATH . '/lang/' . $lang . '.json';
     if (is_file($path)) {
         $data = json_decode(file_get_contents($path) ?: '{}', true);

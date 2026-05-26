@@ -35,6 +35,7 @@ $admLang = adminLang();
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title><?= htmlspecialchars($pageTitle) ?> — MirTech Admin</title>
+<meta name="csrf-token" content="<?= htmlspecialchars(adminCsrfToken(), ENT_QUOTES, 'UTF-8') ?>">
 <?php require CORE_PATH . '/includes/head-fonts.php'; ?>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <link rel="stylesheet" href="<?= asset('admin/admin.css') ?>">

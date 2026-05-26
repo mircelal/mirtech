@@ -98,22 +98,165 @@ function publicFileExists(string $relative): bool
     return $relative !== '' && is_file(publicFilePath($relative));
 }
 
+/** data/ altında təhlükəsiz fayl yolu (path traversal qarşısı). */
+function dataFilePath(string $file): ?string
+{
+    $file = str_replace('\\', '/', trim($file, '/'));
+    if ($file === '' || str_contains($file, '..')) {
+        return null;
+    }
+    $root = realpath(DATA_PATH);
+    if ($root === false) {
+        return null;
+    }
+    $path = DATA_PATH . '/' . $file;
+    $dir = dirname($path);
+    $dirReal = realpath($dir);
+    $normRoot = str_replace('\\', '/', $root);
+    $normDir = str_replace('\\', '/', $dir);
+    if ($dirReal !== false) {
+        $normDirReal = str_replace('\\', '/', $dirReal);
+        if (!str_starts_with($normDirReal, $normRoot)) {
+            return null;
+        }
+        return $path;
+    }
+    if (!str_starts_with($normDir, $normRoot . '/') && $normDir !== $normRoot) {
+        return null;
+    }
+    return $path;
+}
+
 function readJson(string $file): array
 {
-    $path = DATA_PATH . '/' . $file;
-    if (!is_file($path)) {
+    $path = dataFilePath($file);
+    if ($path === null || !is_file($path)) {
         return [];
     }
-    $raw = file_get_contents($path);
-    $data = json_decode($raw ?: '[]', true);
+    $fp = @fopen($path, 'rb');
+    if ($fp === false) {
+        return [];
+    }
+    flock($fp, LOCK_SH);
+    $raw = stream_get_contents($fp) ?: '';
+    flock($fp, LOCK_UN);
+    fclose($fp);
+    $data = json_decode($raw, true);
     return is_array($data) ? $data : [];
 }
 
 function writeJson(string $file, array $data): bool
 {
-    $path = DATA_PATH . '/' . $file;
+    $path = dataFilePath($file);
+    if ($path === null) {
+        return false;
+    }
+    $dir = dirname($path);
+    if (!is_dir($dir) && !mkdir($dir, 0755, true) && !is_dir($dir)) {
+        return false;
+    }
     $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-    return file_put_contents($path, $json) !== false;
+    if ($json === false) {
+        return false;
+    }
+    $tmp = $path . '.' . bin2hex(random_bytes(6)) . '.tmp';
+    if (file_put_contents($tmp, $json, LOCK_EX) === false) {
+        @unlink($tmp);
+        return false;
+    }
+    if (!rename($tmp, $path)) {
+        @unlink($tmp);
+        return false;
+    }
+    return true;
+}
+
+/**
+ * JSON faylında atomik oxu-dəyiş-yaz (LOCK_EX).
+ *
+ * @param callable(array): void $mutator
+ */
+function mutateJson(string $file, callable $mutator): bool
+{
+    $path = dataFilePath($file);
+    if ($path === null) {
+        return false;
+    }
+    $dir = dirname($path);
+    if (!is_dir($dir) && !mkdir($dir, 0755, true) && !is_dir($dir)) {
+        return false;
+    }
+
+    $fp = @fopen($path, 'c+');
+    if ($fp === false) {
+        return false;
+    }
+    if (!flock($fp, LOCK_EX)) {
+        fclose($fp);
+        return false;
+    }
+
+    $raw = stream_get_contents($fp) ?: '';
+    $data = json_decode($raw, true);
+    if (!is_array($data)) {
+        $data = [];
+    }
+
+    $mutator($data);
+
+    $json = json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    if ($json === false) {
+        flock($fp, LOCK_UN);
+        fclose($fp);
+        return false;
+    }
+
+    ftruncate($fp, 0);
+    rewind($fp);
+    $written = fwrite($fp, $json);
+    fflush($fp);
+    flock($fp, LOCK_UN);
+    fclose($fp);
+
+    return $written !== false;
+}
+
+function sanitizeLeadString(string $value, int $maxLen = 500): string
+{
+    $value = trim(strip_tags($value));
+    if ($value === '') {
+        return '';
+    }
+    if (mb_strlen($value, 'UTF-8') > $maxLen) {
+        return mb_substr($value, 0, $maxLen, 'UTF-8');
+    }
+    return $value;
+}
+
+/** Kalkulyator details — yalnız skalyar dəyərlər, məhdud uzunluq. */
+function sanitizeLeadDetails(mixed $details): array
+{
+    if (!is_array($details)) {
+        return [];
+    }
+    $out = [];
+    foreach ($details as $key => $val) {
+        if (!is_string($key) || !preg_match('/^[a-zA-Z0-9_]+$/', $key)) {
+            continue;
+        }
+        if (is_string($val) || is_int($val) || is_float($val) || is_bool($val)) {
+            $out[$key] = is_string($val) ? sanitizeLeadString((string)$val, 200) : $val;
+        } elseif (is_array($val)) {
+            $list = [];
+            foreach ($val as $item) {
+                if (is_string($item) || is_int($item)) {
+                    $list[] = sanitizeLeadString((string)$item, 80);
+                }
+            }
+            $out[$key] = $list;
+        }
+    }
+    return $out;
 }
 
 function isLoggedIn(): bool
@@ -127,6 +270,8 @@ function requireAuth(): void
         header('Location: login.php');
         exit;
     }
+    require_once CORE_PATH . '/includes/admin-security.php';
+    adminEnsureCsrfToken();
 }
 
 function nextId(array $items): int
@@ -195,19 +340,28 @@ function deleteProjectImage(?string $path): void
 
 function saveLead(array $lead): array
 {
-    $leads = readJson('leads.json');
-    $lead['id'] = nextId($leads);
-    $lead['created_at'] = date('Y-m-d H:i:s');
-    $mail = sendLeadNotificationEmail($lead);
-    $lead['email_sent'] = $mail['ok'];
-    if (!$mail['ok'] && !empty($mail['error'])) {
-        $lead['email_error'] = $mail['error'];
+    $saved = null;
+    $mail = ['ok' => false, 'error' => null];
+
+    $ok = mutateJson('leads.json', static function (array &$leads) use ($lead, &$saved, &$mail): void {
+        $entry = $lead;
+        $entry['id'] = nextId($leads);
+        $entry['created_at'] = date('Y-m-d H:i:s');
+        $mail = sendLeadNotificationEmail($entry);
+        $entry['email_sent'] = $mail['ok'];
+        if (!$mail['ok'] && !empty($mail['error'])) {
+            $entry['email_error'] = $mail['error'];
+        }
+        array_unshift($leads, $entry);
+        $saved = $entry;
+    });
+
+    if (!$ok || $saved === null) {
+        return ['id' => null, 'email_sent' => false, 'email_error' => 'Müraciət saxlanıla bilmədi'];
     }
-    array_unshift($leads, $lead);
-    writeJson('leads.json', $leads);
 
     return [
-        'id' => $lead['id'],
+        'id' => $saved['id'],
         'email_sent' => $mail['ok'],
         'email_error' => $mail['error'],
     ];

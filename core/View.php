@@ -3,10 +3,16 @@ declare(strict_types=1);
 
 function view(string $name, array $data = []): void
 {
-    extract($data, EXTR_SKIP);
-    $file = VIEWS_PATH . '/' . str_replace('.', '/', $name) . '.php';
-    if (!is_file($file)) {
+    if (!preg_match('/^[a-zA-Z0-9][a-zA-Z0-9._\\/-]*$/', $name) || str_contains($name, '..')) {
+        throw new InvalidArgumentException('Invalid view name');
+    }
+    $relative = str_replace('.', '/', $name) . '.php';
+    $file = VIEWS_PATH . '/' . $relative;
+    $viewsRoot = realpath(VIEWS_PATH);
+    $resolved = realpath($file);
+    if ($viewsRoot === false || $resolved === false || !str_starts_with($resolved, $viewsRoot)) {
         throw new RuntimeException('View not found: ' . $name);
     }
-    include $file;
+    extract($data, EXTR_SKIP);
+    include $resolved;
 }

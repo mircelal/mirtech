@@ -4,6 +4,7 @@ $edit = $edit ?? null;
 $isEdit = $edit !== null;
 ?>
 <form class="adm-form adm-project-form" method="post" enctype="multipart/form-data" id="projectForm">
+  <?= adminCsrfField() ?>
   <?php if ($isEdit): ?><input type="hidden" name="id" value="<?= (int)$edit['id'] ?>"><?php endif; ?>
 
   <nav class="adm-form-tabs" role="tablist" aria-label="<?= htmlspecialchars(at('projects.title')) ?>">

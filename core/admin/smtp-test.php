@@ -9,5 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+adminVerifyCsrf();
+
 $result = sendTestNotificationEmail();
 echo json_encode($result, JSON_UNESCAPED_UNICODE);

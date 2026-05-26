@@ -10,6 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pass = $_POST['password'] ?? '';
     if (password_verify($pass, ADMIN_PASSWORD_HASH)) {
         $_SESSION['admin_logged_in'] = true;
+        require_once CORE_PATH . '/includes/admin-security.php';
+        adminRegenerateCsrfToken();
         header('Location: index.php');
         exit;
     }

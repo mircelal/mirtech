@@ -13,6 +13,7 @@ $path = DATA_PATH . '/languages.json';
 $languages = readLanguagesMeta();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    adminVerifyCsrf();
     $action = $_POST['action'] ?? '';
     if ($action === 'add') {
         $code = strtolower(preg_replace('/[^a-z]/', '', $_POST['code'] ?? ''));
@@ -36,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ];
                 $langFile = DATA_PATH . '/lang/' . $code . '.json';
                 if (!is_file($langFile)) {
-                    file_put_contents($langFile, json_encode(i18nDefaultStrings('en'), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+                    writeJson('lang/' . $code . '.json', i18nDefaultStrings('en'));
                 }
                 $message = 'Dil əlavə edildi.';
             }
@@ -65,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (!$hasDefault) {
                 $error = 'Default dil seçin.';
             } else {
-                file_put_contents($path, json_encode(array_values($languages), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+                writeJson('languages.json', array_values($languages));
                 $message = 'Dillər saxlanıldı.';
             }
         }
@@ -82,6 +83,7 @@ require '_layout.php';
 <div class="adm-card">
   <h2>Sayt dilləri</h2>
   <form class="adm-form" method="post">
+    <?= adminCsrfField() ?>
     <input type="hidden" name="action" value="save">
     <table class="adm-table">
       <thead>
@@ -111,6 +113,7 @@ require '_layout.php';
 <div class="adm-card">
   <h2>Yeni dil</h2>
   <form class="adm-form adm-row" method="post">
+    <?= adminCsrfField() ?>
     <input type="hidden" name="action" value="add">
     <div><label>Kod</label><input name="code" pattern="[a-z]{2,5}" required placeholder="de"></div>
     <div><label>Ad</label><input name="name" placeholder="German"></div>

@@ -12,6 +12,7 @@ $services = readJson('services.json');
 usort($services, fn($a, $b) => ($a['sort'] ?? 0) <=> ($b['sort'] ?? 0));
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    adminVerifyCsrf();
     $action = $_POST['action'] ?? '';
     if ($action === 'delete') {
         $id = (int)($_POST['id'] ?? 0);
@@ -82,6 +83,7 @@ require '_layout.php';
 <div class="adm-card">
   <h2><?= $edit ? 'Xidməti redaktə et' : 'Yeni xidmət' ?></h2>
   <form class="adm-form" method="post">
+    <?= adminCsrfField() ?>
     <?php if ($edit): ?><input type="hidden" name="id" value="<?= (int)$edit['id'] ?>"><?php endif; ?>
     <?= adminLangTabs() ?>
     <?php foreach (adminContentLangs() as $li => $l):
@@ -134,6 +136,7 @@ require '_layout.php';
         <td>
           <a href="?edit=<?= (int)$s['id'] ?>" class="adm-btn adm-btn-ghost" style="padding:6px 10px;font-size:12px">Redaktə</a>
           <form method="post" style="display:inline" onsubmit="return confirm('Silinsin?')">
+            <?= adminCsrfField() ?>
             <input type="hidden" name="action" value="delete">
             <input type="hidden" name="id" value="<?= (int)$s['id'] ?>">
             <button type="submit" class="adm-btn adm-btn-danger" style="padding:6px 10px;font-size:12px">Sil</button>

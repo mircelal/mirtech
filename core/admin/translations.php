@@ -37,6 +37,7 @@ $defaults = i18nDefaultStrings($langCode);
 $strings = array_merge($defaults, $strings);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    adminVerifyCsrf();
     $langCode = strtolower(trim($_POST['lang'] ?? $langCode));
     if (!isValidLang($langCode)) {
         $error = 'Yanlış dil.';
@@ -52,8 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
             $strings[$k] = trim((string)$v);
         }
-        $path = DATA_PATH . '/lang/' . $langCode . '.json';
-        file_put_contents($path, json_encode($strings, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+        writeJson('lang/' . $langCode . '.json', $strings);
         $message = 'Tərcümələr saxlanıldı (' . strtoupper($langCode) . ').';
     }
 }
@@ -95,6 +95,7 @@ require '_layout.php';
   </nav>
 
   <form class="adm-form" method="post">
+    <?= adminCsrfField() ?>
     <input type="hidden" name="lang" value="<?= htmlspecialchars($langCode) ?>">
     <?php if (empty($filtered)): ?>
       <p class="adm-hint">Bu qrupda açar yoxdur.</p>

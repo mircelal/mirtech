@@ -12,6 +12,7 @@ $viewId = (int)($_GET['id'] ?? 0);
 $viewLead = $viewId > 0 ? findLeadById($leads, $viewId) : null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['action'] ?? '') === 'delete') {
+    adminVerifyCsrf();
     $id = (int)($_POST['id'] ?? 0);
     $leads = array_values(array_filter($leads, fn($l) => (int)($l['id'] ?? 0) !== $id));
     writeJson('leads.json', $leads);
@@ -51,6 +52,7 @@ require '_layout.php';
         </a>
       <?php endif; ?>
       <form method="post" style="display:inline" onsubmit="return confirm('Bu müraciət silinsin?')">
+        <?= adminCsrfField() ?>
         <input type="hidden" name="action" value="delete">
         <input type="hidden" name="id" value="<?= (int)($viewLead['id'] ?? 0) ?>">
         <button type="submit" class="adm-btn adm-btn-danger adm-btn-sm"><i class="fa-solid fa-trash"></i> Sil</button>

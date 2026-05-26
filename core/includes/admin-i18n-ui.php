@@ -321,7 +321,7 @@ function seedAdminLangFiles(): void
     foreach (['az', 'en', 'es'] as $code) {
         $path = DATA_PATH . '/lang/admin-' . $code . '.json';
         if (!is_file($path)) {
-            file_put_contents($path, json_encode(adminUiDefaultStrings($code), JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+            writeJson('lang/admin-' . $code . '.json', adminUiDefaultStrings($code));
         }
     }
 }
