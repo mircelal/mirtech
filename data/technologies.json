@@ -1,87 +1,1787 @@
 [
-  {"id":1,"name":"PHP","category":"languages","icon":"devicon-php-plain","icon_type":"devicon","brand":"php","sort":1,"featured":true},
-  {"id":2,"name":"Laravel","category":"web","icon":"devicon-laravel-plain","icon_type":"devicon","brand":"laravel","sort":2,"featured":true},
-  {"id":3,"name":"Vue.js","category":"web","icon":"devicon-vuejs-plain","icon_type":"devicon","brand":"vue","sort":3,"featured":true},
-  {"id":4,"name":"Next.js","category":"web","icon":"devicon-nextjs-plain","icon_type":"devicon","brand":"nextjs","sort":4,"featured":true},
-  {"id":5,"name":"Node.js","category":"web","icon":"devicon-nodejs-plain","icon_type":"devicon","brand":"node","sort":5,"featured":true},
-  {"id":6,"name":"WordPress","category":"web","icon":"devicon-wordpress-plain","icon_type":"devicon","brand":"wordpress","sort":6,"featured":true},
-  {"id":43,"name":"DLE","category":"web","icon":"fa-newspaper","icon_type":"solid","brand":"dle","sort":7,"featured":true},
-  {"id":44,"name":"Tailwind CSS","category":"web","icon":"devicon-tailwindcss-plain","icon_type":"devicon","brand":"tailwind","sort":8,"featured":false},
-  {"id":7,"name":"Python","category":"languages","icon":"devicon-python-plain","icon_type":"devicon","brand":"python","sort":4,"featured":true},
-  {"id":8,"name":"C++","category":"languages","icon":"devicon-cplusplus-plain","icon_type":"devicon","brand":"cpp","sort":10,"featured":false},
-  {"id":9,"name":"Kotlin","category":"languages","icon":"devicon-kotlin-plain","icon_type":"devicon","brand":"kotlin","sort":7,"featured":true},
-  {"id":10,"name":"Flutter","category":"mobile","icon":"devicon-flutter-plain","icon_type":"devicon","brand":"flutter","sort":10,"featured":true},
-  {"id":11,"name":"Android","category":"mobile","icon":"devicon-android-plain","icon_type":"devicon","brand":"android","sort":11,"featured":false},
-  {"id":12,"name":"iOS","category":"mobile","icon":"devicon-apple-original","icon_type":"devicon","brand":"ios","sort":12,"featured":false},
-  {"id":13,"name":"Git","category":"devops","icon":"devicon-git-plain","icon_type":"devicon","brand":"git","sort":13,"featured":true},
-  {"id":14,"name":"GitHub","category":"devops","icon":"devicon-github-original","icon_type":"devicon","brand":"github","sort":14,"featured":false},
-  {"id":15,"name":"GitLab","category":"devops","icon":"devicon-gitlab-plain","icon_type":"devicon","brand":"gitlab","sort":15,"featured":false},
-  {"id":16,"name":"Docker","category":"devops","icon":"devicon-docker-plain","icon_type":"devicon","brand":"docker","sort":16,"featured":true},
-  {"id":17,"name":"Composer","category":"devops","icon":"devicon-composer-line","icon_type":"devicon","brand":"composer","sort":17,"featured":false},
-  {"id":18,"name":"npm","category":"devops","icon":"devicon-npm-original-wordmark","icon_type":"devicon","brand":"npm","sort":18,"featured":false},
-  {"id":19,"name":"Vite","category":"web","icon":"devicon-vitejs-plain","icon_type":"devicon","brand":"vite","sort":19,"featured":false},
-  {"id":20,"name":"MySQL","category":"database","icon":"devicon-mysql-plain","icon_type":"devicon","brand":"mysql","sort":20,"featured":true},
-  {"id":21,"name":"MariaDB","category":"database","icon":"devicon-mariadb-plain","icon_type":"devicon","brand":"mariadb","sort":21,"featured":true},
-  {"id":22,"name":"PostgreSQL","category":"database","icon":"devicon-postgresql-plain","icon_type":"devicon","brand":"postgresql","sort":22,"featured":false},
-  {"id":23,"name":"Redis","category":"database","icon":"devicon-redis-plain","icon_type":"devicon","brand":"redis","sort":23,"featured":false},
-  {"id":24,"name":"Linux","category":"systems","icon":"devicon-linux-plain","icon_type":"devicon","brand":"linux","sort":24,"featured":true},
-  {"id":25,"name":"Ubuntu","category":"systems","icon":"devicon-ubuntu-plain","icon_type":"devicon","brand":"ubuntu","sort":25,"featured":true},
-  {"id":26,"name":"Debian","category":"systems","icon":"devicon-debian-plain","icon_type":"devicon","brand":"debian","sort":26,"featured":false},
-  {"id":27,"name":"AlmaLinux","category":"systems","icon":"devicon-redhat-plain","icon_type":"devicon","brand":"almalinux","sort":27,"featured":true},
-  {"id":28,"name":"Windows Server","category":"systems","icon":"devicon-windows8-original","icon_type":"devicon","brand":"windows","sort":28,"featured":false},
-  {"id":29,"name":"macOS","category":"systems","icon":"devicon-apple-original","icon_type":"devicon","brand":"macos","sort":29,"featured":false},
-  {"id":30,"name":"Nginx","category":"infra","icon":"devicon-nginx-original","icon_type":"devicon","brand":"nginx","sort":30,"featured":true},
-  {"id":31,"name":"Apache","category":"infra","icon":"devicon-apache-plain","icon_type":"devicon","brand":"apache","sort":31,"featured":true},
-  {"id":32,"name":"Proxmox VE","category":"infra","icon":"fa-server","icon_type":"solid","brand":"proxmox","sort":32,"featured":true},
-  {"id":33,"name":"TrueNAS","category":"infra","icon":"fa-hard-drive","icon_type":"solid","brand":"truenas","sort":33,"featured":false},
-  {"id":34,"name":"Nextcloud","category":"cloud","icon":"fa-cloud","icon_type":"solid","brand":"nextcloud","sort":34,"featured":true},
-  {"id":35,"name":"Portainer","category":"infra","icon":"devicon-docker-plain","icon_type":"devicon","brand":"portainer","sort":35,"featured":false},
-  {"id":36,"name":"Grafana","category":"infra","icon":"devicon-grafana-original","icon_type":"devicon","brand":"grafana","sort":36,"featured":false},
-  {"id":37,"name":"Prometheus","category":"infra","icon":"fa-chart-line","icon_type":"solid","brand":"prometheus","sort":37,"featured":false},
-  {"id":38,"name":"WireGuard","category":"infra","icon":"fa-shield-halved","icon_type":"solid","brand":"wireguard","sort":38,"featured":false},
-  {"id":39,"name":"Cloudflare","category":"cloud","icon":"devicon-cloudflare-plain","icon_type":"devicon","brand":"cloudflare","sort":39,"featured":true},
-  {"id":40,"name":"phpMyAdmin","category":"database","icon":"devicon-phpmyadmin-plain","icon_type":"devicon","brand":"phpmyadmin","sort":40,"featured":false},
-  {"id":41,"name":"Bash","category":"devops","icon":"devicon-bash-plain","icon_type":"devicon","brand":"bash","sort":41,"featured":false},
-  {"id":42,"name":"REST API","category":"web","icon":"fa-plug","icon_type":"solid","brand":"api","sort":42,"featured":false},
-  {"id":45,"name":"Amazon AWS","category":"cloud","icon":"devicon-amazonwebservices-plain","icon_type":"devicon","brand":"aws","sort":43,"featured":true},
-  {"id":46,"name":"Amazon S3","category":"cloud","icon":"devicon-amazonwebservices-plain","icon_type":"devicon","brand":"s3","sort":44,"featured":false},
-  {"id":47,"name":"Google Cloud","category":"cloud","icon":"devicon-googlecloud-plain","icon_type":"devicon","brand":"gcp","sort":45,"featured":true},
-  {"id":48,"name":"Google Cloud Storage","category":"cloud","icon":"devicon-googlecloud-plain","icon_type":"devicon","brand":"gcs","sort":46,"featured":false},
-  {"id":49,"name":"Microsoft Azure","category":"cloud","icon":"devicon-azure-plain","icon_type":"devicon","brand":"azure","sort":47,"featured":false},
-  {"id":50,"name":"Cloudflare Workers","category":"cloud","icon":"devicon-cloudflare-plain","icon_type":"devicon","brand":"cloudflare-workers","sort":48,"featured":false},
-  {"id":51,"name":"Cloudflare R2","category":"cloud","icon":"devicon-cloudflare-plain","icon_type":"devicon","brand":"cloudflare-r2","sort":49,"featured":false},
-  {"id":52,"name":"DigitalOcean","category":"cloud","icon":"devicon-digitalocean-plain","icon_type":"devicon","brand":"digitalocean","sort":50,"featured":false},
-  {"id":53,"name":"Firebase","category":"cloud","icon":"devicon-firebase-plain","icon_type":"devicon","brand":"firebase","sort":51,"featured":false},
-  {"id":54,"name":"Vercel","category":"cloud","icon":"devicon-vercel-plain","icon_type":"devicon","brand":"vercel","sort":52,"featured":false},
-  {"id":55,"name":"Netlify","category":"cloud","icon":"devicon-netlify-plain","icon_type":"devicon","brand":"netlify","sort":53,"featured":false},
-  {"id":56,"name":"Kubernetes","category":"cloud","icon":"devicon-kubernetes-plain","icon_type":"devicon","brand":"kubernetes","sort":54,"featured":false},
-  {"id":57,"name":"Hetzner Cloud","category":"cloud","icon":"fa-cloud","icon_type":"solid","brand":"hetzner","sort":55,"featured":false},
-  {"id":58,"name":"OpenAI","category":"ai","icon":"devicon-openai-original","icon_type":"devicon","brand":"openai","sort":56,"featured":true},
-  {"id":59,"name":"ChatGPT API","category":"ai","icon":"devicon-openai-original","icon_type":"devicon","brand":"chatgpt","sort":57,"featured":false},
-  {"id":60,"name":"Claude (Anthropic)","category":"ai","icon":"fa-message","icon_type":"solid","brand":"claude","sort":58,"featured":true},
-  {"id":61,"name":"Google Gemini","category":"ai","icon":"fa-wand-magic-sparkles","icon_type":"solid","brand":"gemini","sort":59,"featured":true},
-  {"id":62,"name":"TensorFlow","category":"ai","icon":"devicon-tensorflow-original","icon_type":"devicon","brand":"tensorflow","sort":60,"featured":false},
-  {"id":63,"name":"PyTorch","category":"ai","icon":"devicon-pytorch-original","icon_type":"devicon","brand":"pytorch","sort":61,"featured":false},
-  {"id":64,"name":"LangChain","category":"ai","icon":"fa-link","icon_type":"solid","brand":"langchain","sort":62,"featured":false},
-  {"id":65,"name":"Hugging Face","category":"ai","icon":"fa-face-smile","icon_type":"solid","brand":"huggingface","sort":63,"featured":false},
-  {"id":66,"name":"Ollama","category":"ai","icon":"fa-robot","icon_type":"solid","brand":"ollama","sort":64,"featured":false},
-  {"id":67,"name":"JavaScript","category":"languages","icon":"devicon-javascript-plain","icon_type":"devicon","brand":"javascript","sort":2,"featured":true},
-  {"id":68,"name":"TypeScript","category":"languages","icon":"devicon-typescript-plain","icon_type":"devicon","brand":"typescript","sort":3,"featured":true},
-  {"id":69,"name":"Dart","category":"languages","icon":"devicon-dart-plain","icon_type":"devicon","brand":"dart","sort":5,"featured":true},
-  {"id":70,"name":"Java","category":"languages","icon":"devicon-java-plain","icon_type":"devicon","brand":"java","sort":6,"featured":true},
-  {"id":71,"name":"Go","category":"languages","icon":"devicon-go-original-wordmark","icon_type":"devicon","brand":"go","sort":8,"featured":false},
-  {"id":72,"name":"Rust","category":"languages","icon":"devicon-rust-plain","icon_type":"devicon","brand":"rust","sort":9,"featured":false},
-  {"id":73,"name":"C#","category":"languages","icon":"devicon-csharp-plain","icon_type":"devicon","brand":"csharp","sort":11,"featured":false},
-  {"id":74,"name":"Ruby","category":"languages","icon":"devicon-ruby-plain","icon_type":"devicon","brand":"ruby","sort":12,"featured":false},
-  {"id":75,"name":"Swift","category":"languages","icon":"devicon-swift-plain","icon_type":"devicon","brand":"swift","sort":13,"featured":false},
-  {"id":76,"name":"Scala","category":"languages","icon":"devicon-scala-plain","icon_type":"devicon","brand":"scala","sort":14,"featured":false},
-  {"id":77,"name":"R","category":"languages","icon":"devicon-r-original","icon_type":"devicon","brand":"r","sort":15,"featured":false},
-  {"id":78,"name":"Elixir","category":"languages","icon":"devicon-elixir-plain","icon_type":"devicon","brand":"elixir","sort":16,"featured":false},
-  {"id":79,"name":"Lua","category":"languages","icon":"devicon-lua-plain","icon_type":"devicon","brand":"lua","sort":17,"featured":false},
-  {"id":80,"name":"Bash","category":"languages","icon":"devicon-bash-plain","icon_type":"devicon","brand":"bash-lang","sort":18,"featured":false},
-  {"id":81,"name":"Objective-C","category":"languages","icon":"devicon-objectivec-plain","icon_type":"devicon","brand":"objectivec","sort":19,"featured":false},
-  {"id":82,"name":"HTML5","category":"languages","icon":"devicon-html5-plain","icon_type":"devicon","brand":"html5","sort":20,"featured":false},
-  {"id":83,"name":"CSS3","category":"languages","icon":"devicon-css3-plain","icon_type":"devicon","brand":"css3","sort":21,"featured":false},
-  {"id":84,"name":"Haskell","category":"languages","icon":"devicon-haskell-plain","icon_type":"devicon","brand":"haskell","sort":22,"featured":false},
-  {"id":85,"name":".NET","category":"languages","icon":"devicon-dot-net-plain","icon_type":"devicon","brand":"dotnet","sort":23,"featured":false}
+    {
+        "id": 1,
+        "name": "PHP",
+        "category": "languages",
+        "icon": "devicon-php-plain",
+        "icon_type": "devicon",
+        "brand": "php",
+        "sort": 1,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "PHP"
+            },
+            "en": {
+                "name": "PHP"
+            },
+            "es": {
+                "name": "PHP"
+            }
+        }
+    },
+    {
+        "id": 2,
+        "name": "Laravel",
+        "category": "web",
+        "icon": "devicon-laravel-plain",
+        "icon_type": "devicon",
+        "brand": "laravel",
+        "sort": 2,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "Laravel"
+            },
+            "en": {
+                "name": "Laravel"
+            },
+            "es": {
+                "name": "Laravel"
+            }
+        }
+    },
+    {
+        "id": 3,
+        "name": "Vue.js",
+        "category": "web",
+        "icon": "devicon-vuejs-plain",
+        "icon_type": "devicon",
+        "brand": "vue",
+        "sort": 3,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "Vue.js"
+            },
+            "en": {
+                "name": "Vue.js"
+            },
+            "es": {
+                "name": "Vue.js"
+            }
+        }
+    },
+    {
+        "id": 4,
+        "name": "Next.js",
+        "category": "web",
+        "icon": "devicon-nextjs-plain",
+        "icon_type": "devicon",
+        "brand": "nextjs",
+        "sort": 4,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "Next.js"
+            },
+            "en": {
+                "name": "Next.js"
+            },
+            "es": {
+                "name": "Next.js"
+            }
+        }
+    },
+    {
+        "id": 5,
+        "name": "Node.js",
+        "category": "web",
+        "icon": "devicon-nodejs-plain",
+        "icon_type": "devicon",
+        "brand": "node",
+        "sort": 5,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "Node.js"
+            },
+            "en": {
+                "name": "Node.js"
+            },
+            "es": {
+                "name": "Node.js"
+            }
+        }
+    },
+    {
+        "id": 6,
+        "name": "WordPress",
+        "category": "web",
+        "icon": "devicon-wordpress-plain",
+        "icon_type": "devicon",
+        "brand": "wordpress",
+        "sort": 6,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "WordPress"
+            },
+            "en": {
+                "name": "WordPress"
+            },
+            "es": {
+                "name": "WordPress"
+            }
+        }
+    },
+    {
+        "id": 43,
+        "name": "DLE",
+        "category": "web",
+        "icon": "fa-newspaper",
+        "icon_type": "solid",
+        "brand": "dle",
+        "sort": 7,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "DLE"
+            },
+            "en": {
+                "name": "DLE"
+            },
+            "es": {
+                "name": "DLE"
+            }
+        }
+    },
+    {
+        "id": 44,
+        "name": "Tailwind CSS",
+        "category": "web",
+        "icon": "devicon-tailwindcss-plain",
+        "icon_type": "devicon",
+        "brand": "tailwind",
+        "sort": 8,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Tailwind CSS"
+            },
+            "en": {
+                "name": "Tailwind CSS"
+            },
+            "es": {
+                "name": "Tailwind CSS"
+            }
+        }
+    },
+    {
+        "id": 7,
+        "name": "Python",
+        "category": "languages",
+        "icon": "devicon-python-plain",
+        "icon_type": "devicon",
+        "brand": "python",
+        "sort": 4,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "Python"
+            },
+            "en": {
+                "name": "Python"
+            },
+            "es": {
+                "name": "Python"
+            }
+        }
+    },
+    {
+        "id": 8,
+        "name": "C++",
+        "category": "languages",
+        "icon": "devicon-cplusplus-plain",
+        "icon_type": "devicon",
+        "brand": "cpp",
+        "sort": 10,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "C++"
+            },
+            "en": {
+                "name": "C++"
+            },
+            "es": {
+                "name": "C++"
+            }
+        }
+    },
+    {
+        "id": 9,
+        "name": "Kotlin",
+        "category": "languages",
+        "icon": "devicon-kotlin-plain",
+        "icon_type": "devicon",
+        "brand": "kotlin",
+        "sort": 7,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "Kotlin"
+            },
+            "en": {
+                "name": "Kotlin"
+            },
+            "es": {
+                "name": "Kotlin"
+            }
+        }
+    },
+    {
+        "id": 10,
+        "name": "Flutter",
+        "category": "mobile",
+        "icon": "devicon-flutter-plain",
+        "icon_type": "devicon",
+        "brand": "flutter",
+        "sort": 10,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "Flutter"
+            },
+            "en": {
+                "name": "Flutter"
+            },
+            "es": {
+                "name": "Flutter"
+            }
+        }
+    },
+    {
+        "id": 11,
+        "name": "Android",
+        "category": "mobile",
+        "icon": "devicon-android-plain",
+        "icon_type": "devicon",
+        "brand": "android",
+        "sort": 11,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Android"
+            },
+            "en": {
+                "name": "Android"
+            },
+            "es": {
+                "name": "Android"
+            }
+        }
+    },
+    {
+        "id": 12,
+        "name": "iOS",
+        "category": "mobile",
+        "icon": "devicon-apple-original",
+        "icon_type": "devicon",
+        "brand": "ios",
+        "sort": 12,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "iOS"
+            },
+            "en": {
+                "name": "iOS"
+            },
+            "es": {
+                "name": "iOS"
+            }
+        }
+    },
+    {
+        "id": 13,
+        "name": "Git",
+        "category": "devops",
+        "icon": "devicon-git-plain",
+        "icon_type": "devicon",
+        "brand": "git",
+        "sort": 13,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "Git"
+            },
+            "en": {
+                "name": "Git"
+            },
+            "es": {
+                "name": "Git"
+            }
+        }
+    },
+    {
+        "id": 14,
+        "name": "GitHub",
+        "category": "devops",
+        "icon": "devicon-github-original",
+        "icon_type": "devicon",
+        "brand": "github",
+        "sort": 14,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "GitHub"
+            },
+            "en": {
+                "name": "GitHub"
+            },
+            "es": {
+                "name": "GitHub"
+            }
+        }
+    },
+    {
+        "id": 15,
+        "name": "GitLab",
+        "category": "devops",
+        "icon": "devicon-gitlab-plain",
+        "icon_type": "devicon",
+        "brand": "gitlab",
+        "sort": 15,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "GitLab"
+            },
+            "en": {
+                "name": "GitLab"
+            },
+            "es": {
+                "name": "GitLab"
+            }
+        }
+    },
+    {
+        "id": 16,
+        "name": "Docker",
+        "category": "devops",
+        "icon": "devicon-docker-plain",
+        "icon_type": "devicon",
+        "brand": "docker",
+        "sort": 16,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "Docker"
+            },
+            "en": {
+                "name": "Docker"
+            },
+            "es": {
+                "name": "Docker"
+            }
+        }
+    },
+    {
+        "id": 17,
+        "name": "Composer",
+        "category": "devops",
+        "icon": "devicon-composer-line",
+        "icon_type": "devicon",
+        "brand": "composer",
+        "sort": 17,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Composer"
+            },
+            "en": {
+                "name": "Composer"
+            },
+            "es": {
+                "name": "Composer"
+            }
+        }
+    },
+    {
+        "id": 18,
+        "name": "npm",
+        "category": "devops",
+        "icon": "devicon-npm-original-wordmark",
+        "icon_type": "devicon",
+        "brand": "npm",
+        "sort": 18,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "npm"
+            },
+            "en": {
+                "name": "npm"
+            },
+            "es": {
+                "name": "npm"
+            }
+        }
+    },
+    {
+        "id": 19,
+        "name": "Vite",
+        "category": "web",
+        "icon": "devicon-vitejs-plain",
+        "icon_type": "devicon",
+        "brand": "vite",
+        "sort": 19,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Vite"
+            },
+            "en": {
+                "name": "Vite"
+            },
+            "es": {
+                "name": "Vite"
+            }
+        }
+    },
+    {
+        "id": 20,
+        "name": "MySQL",
+        "category": "database",
+        "icon": "devicon-mysql-plain",
+        "icon_type": "devicon",
+        "brand": "mysql",
+        "sort": 20,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "MySQL"
+            },
+            "en": {
+                "name": "MySQL"
+            },
+            "es": {
+                "name": "MySQL"
+            }
+        }
+    },
+    {
+        "id": 21,
+        "name": "MariaDB",
+        "category": "database",
+        "icon": "devicon-mariadb-plain",
+        "icon_type": "devicon",
+        "brand": "mariadb",
+        "sort": 21,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "MariaDB"
+            },
+            "en": {
+                "name": "MariaDB"
+            },
+            "es": {
+                "name": "MariaDB"
+            }
+        }
+    },
+    {
+        "id": 22,
+        "name": "PostgreSQL",
+        "category": "database",
+        "icon": "devicon-postgresql-plain",
+        "icon_type": "devicon",
+        "brand": "postgresql",
+        "sort": 22,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "PostgreSQL"
+            },
+            "en": {
+                "name": "PostgreSQL"
+            },
+            "es": {
+                "name": "PostgreSQL"
+            }
+        }
+    },
+    {
+        "id": 23,
+        "name": "Redis",
+        "category": "database",
+        "icon": "devicon-redis-plain",
+        "icon_type": "devicon",
+        "brand": "redis",
+        "sort": 23,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Redis"
+            },
+            "en": {
+                "name": "Redis"
+            },
+            "es": {
+                "name": "Redis"
+            }
+        }
+    },
+    {
+        "id": 24,
+        "name": "Linux",
+        "category": "systems",
+        "icon": "devicon-linux-plain",
+        "icon_type": "devicon",
+        "brand": "linux",
+        "sort": 24,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "Linux"
+            },
+            "en": {
+                "name": "Linux"
+            },
+            "es": {
+                "name": "Linux"
+            }
+        }
+    },
+    {
+        "id": 25,
+        "name": "Ubuntu",
+        "category": "systems",
+        "icon": "devicon-ubuntu-plain",
+        "icon_type": "devicon",
+        "brand": "ubuntu",
+        "sort": 25,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "Ubuntu"
+            },
+            "en": {
+                "name": "Ubuntu"
+            },
+            "es": {
+                "name": "Ubuntu"
+            }
+        }
+    },
+    {
+        "id": 26,
+        "name": "Debian",
+        "category": "systems",
+        "icon": "devicon-debian-plain",
+        "icon_type": "devicon",
+        "brand": "debian",
+        "sort": 26,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Debian"
+            },
+            "en": {
+                "name": "Debian"
+            },
+            "es": {
+                "name": "Debian"
+            }
+        }
+    },
+    {
+        "id": 27,
+        "name": "AlmaLinux",
+        "category": "systems",
+        "icon": "devicon-redhat-plain",
+        "icon_type": "devicon",
+        "brand": "almalinux",
+        "sort": 27,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "AlmaLinux"
+            },
+            "en": {
+                "name": "AlmaLinux"
+            },
+            "es": {
+                "name": "AlmaLinux"
+            }
+        }
+    },
+    {
+        "id": 28,
+        "name": "Windows Server",
+        "category": "systems",
+        "icon": "devicon-windows8-original",
+        "icon_type": "devicon",
+        "brand": "windows",
+        "sort": 28,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Windows Server"
+            },
+            "en": {
+                "name": "Windows Server"
+            },
+            "es": {
+                "name": "Windows Server"
+            }
+        }
+    },
+    {
+        "id": 29,
+        "name": "macOS",
+        "category": "systems",
+        "icon": "devicon-apple-original",
+        "icon_type": "devicon",
+        "brand": "macos",
+        "sort": 29,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "macOS"
+            },
+            "en": {
+                "name": "macOS"
+            },
+            "es": {
+                "name": "macOS"
+            }
+        }
+    },
+    {
+        "id": 30,
+        "name": "Nginx",
+        "category": "infra",
+        "icon": "devicon-nginx-original",
+        "icon_type": "devicon",
+        "brand": "nginx",
+        "sort": 30,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "Nginx"
+            },
+            "en": {
+                "name": "Nginx"
+            },
+            "es": {
+                "name": "Nginx"
+            }
+        }
+    },
+    {
+        "id": 31,
+        "name": "Apache",
+        "category": "infra",
+        "icon": "devicon-apache-plain",
+        "icon_type": "devicon",
+        "brand": "apache",
+        "sort": 31,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "Apache"
+            },
+            "en": {
+                "name": "Apache"
+            },
+            "es": {
+                "name": "Apache"
+            }
+        }
+    },
+    {
+        "id": 32,
+        "name": "Proxmox VE",
+        "category": "infra",
+        "icon": "fa-server",
+        "icon_type": "solid",
+        "brand": "proxmox",
+        "sort": 32,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "Proxmox VE"
+            },
+            "en": {
+                "name": "Proxmox VE"
+            },
+            "es": {
+                "name": "Proxmox VE"
+            }
+        }
+    },
+    {
+        "id": 33,
+        "name": "TrueNAS",
+        "category": "infra",
+        "icon": "fa-hard-drive",
+        "icon_type": "solid",
+        "brand": "truenas",
+        "sort": 33,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "TrueNAS"
+            },
+            "en": {
+                "name": "TrueNAS"
+            },
+            "es": {
+                "name": "TrueNAS"
+            }
+        }
+    },
+    {
+        "id": 34,
+        "name": "Nextcloud",
+        "category": "cloud",
+        "icon": "fa-cloud",
+        "icon_type": "solid",
+        "brand": "nextcloud",
+        "sort": 34,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "Nextcloud"
+            },
+            "en": {
+                "name": "Nextcloud"
+            },
+            "es": {
+                "name": "Nextcloud"
+            }
+        }
+    },
+    {
+        "id": 35,
+        "name": "Portainer",
+        "category": "infra",
+        "icon": "devicon-docker-plain",
+        "icon_type": "devicon",
+        "brand": "portainer",
+        "sort": 35,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Portainer"
+            },
+            "en": {
+                "name": "Portainer"
+            },
+            "es": {
+                "name": "Portainer"
+            }
+        }
+    },
+    {
+        "id": 36,
+        "name": "Grafana",
+        "category": "infra",
+        "icon": "devicon-grafana-original",
+        "icon_type": "devicon",
+        "brand": "grafana",
+        "sort": 36,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Grafana"
+            },
+            "en": {
+                "name": "Grafana"
+            },
+            "es": {
+                "name": "Grafana"
+            }
+        }
+    },
+    {
+        "id": 37,
+        "name": "Prometheus",
+        "category": "infra",
+        "icon": "fa-chart-line",
+        "icon_type": "solid",
+        "brand": "prometheus",
+        "sort": 37,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Prometheus"
+            },
+            "en": {
+                "name": "Prometheus"
+            },
+            "es": {
+                "name": "Prometheus"
+            }
+        }
+    },
+    {
+        "id": 38,
+        "name": "WireGuard",
+        "category": "infra",
+        "icon": "fa-shield-halved",
+        "icon_type": "solid",
+        "brand": "wireguard",
+        "sort": 38,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "WireGuard"
+            },
+            "en": {
+                "name": "WireGuard"
+            },
+            "es": {
+                "name": "WireGuard"
+            }
+        }
+    },
+    {
+        "id": 39,
+        "name": "Cloudflare",
+        "category": "cloud",
+        "icon": "devicon-cloudflare-plain",
+        "icon_type": "devicon",
+        "brand": "cloudflare",
+        "sort": 39,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "Cloudflare"
+            },
+            "en": {
+                "name": "Cloudflare"
+            },
+            "es": {
+                "name": "Cloudflare"
+            }
+        }
+    },
+    {
+        "id": 40,
+        "name": "phpMyAdmin",
+        "category": "database",
+        "icon": "devicon-phpmyadmin-plain",
+        "icon_type": "devicon",
+        "brand": "phpmyadmin",
+        "sort": 40,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "phpMyAdmin"
+            },
+            "en": {
+                "name": "phpMyAdmin"
+            },
+            "es": {
+                "name": "phpMyAdmin"
+            }
+        }
+    },
+    {
+        "id": 41,
+        "name": "Bash",
+        "category": "devops",
+        "icon": "devicon-bash-plain",
+        "icon_type": "devicon",
+        "brand": "bash",
+        "sort": 41,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Bash"
+            },
+            "en": {
+                "name": "Bash"
+            },
+            "es": {
+                "name": "Bash"
+            }
+        }
+    },
+    {
+        "id": 42,
+        "name": "REST API",
+        "category": "web",
+        "icon": "fa-plug",
+        "icon_type": "solid",
+        "brand": "api",
+        "sort": 42,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "REST API"
+            },
+            "en": {
+                "name": "REST API"
+            },
+            "es": {
+                "name": "REST API"
+            }
+        }
+    },
+    {
+        "id": 45,
+        "name": "Amazon AWS",
+        "category": "cloud",
+        "icon": "devicon-amazonwebservices-plain",
+        "icon_type": "devicon",
+        "brand": "aws",
+        "sort": 43,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "Amazon AWS"
+            },
+            "en": {
+                "name": "Amazon AWS"
+            },
+            "es": {
+                "name": "Amazon AWS"
+            }
+        }
+    },
+    {
+        "id": 46,
+        "name": "Amazon S3",
+        "category": "cloud",
+        "icon": "devicon-amazonwebservices-plain",
+        "icon_type": "devicon",
+        "brand": "s3",
+        "sort": 44,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Amazon S3"
+            },
+            "en": {
+                "name": "Amazon S3"
+            },
+            "es": {
+                "name": "Amazon S3"
+            }
+        }
+    },
+    {
+        "id": 47,
+        "name": "Google Cloud",
+        "category": "cloud",
+        "icon": "devicon-googlecloud-plain",
+        "icon_type": "devicon",
+        "brand": "gcp",
+        "sort": 45,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "Google Cloud"
+            },
+            "en": {
+                "name": "Google Cloud"
+            },
+            "es": {
+                "name": "Google Cloud"
+            }
+        }
+    },
+    {
+        "id": 48,
+        "name": "Google Cloud Storage",
+        "category": "cloud",
+        "icon": "devicon-googlecloud-plain",
+        "icon_type": "devicon",
+        "brand": "gcs",
+        "sort": 46,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Google Cloud Storage"
+            },
+            "en": {
+                "name": "Google Cloud Storage"
+            },
+            "es": {
+                "name": "Google Cloud Storage"
+            }
+        }
+    },
+    {
+        "id": 49,
+        "name": "Microsoft Azure",
+        "category": "cloud",
+        "icon": "devicon-azure-plain",
+        "icon_type": "devicon",
+        "brand": "azure",
+        "sort": 47,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Microsoft Azure"
+            },
+            "en": {
+                "name": "Microsoft Azure"
+            },
+            "es": {
+                "name": "Microsoft Azure"
+            }
+        }
+    },
+    {
+        "id": 50,
+        "name": "Cloudflare Workers",
+        "category": "cloud",
+        "icon": "devicon-cloudflare-plain",
+        "icon_type": "devicon",
+        "brand": "cloudflare-workers",
+        "sort": 48,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Cloudflare Workers"
+            },
+            "en": {
+                "name": "Cloudflare Workers"
+            },
+            "es": {
+                "name": "Cloudflare Workers"
+            }
+        }
+    },
+    {
+        "id": 51,
+        "name": "Cloudflare R2",
+        "category": "cloud",
+        "icon": "devicon-cloudflare-plain",
+        "icon_type": "devicon",
+        "brand": "cloudflare-r2",
+        "sort": 49,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Cloudflare R2"
+            },
+            "en": {
+                "name": "Cloudflare R2"
+            },
+            "es": {
+                "name": "Cloudflare R2"
+            }
+        }
+    },
+    {
+        "id": 52,
+        "name": "DigitalOcean",
+        "category": "cloud",
+        "icon": "devicon-digitalocean-plain",
+        "icon_type": "devicon",
+        "brand": "digitalocean",
+        "sort": 50,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "DigitalOcean"
+            },
+            "en": {
+                "name": "DigitalOcean"
+            },
+            "es": {
+                "name": "DigitalOcean"
+            }
+        }
+    },
+    {
+        "id": 53,
+        "name": "Firebase",
+        "category": "cloud",
+        "icon": "devicon-firebase-plain",
+        "icon_type": "devicon",
+        "brand": "firebase",
+        "sort": 51,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Firebase"
+            },
+            "en": {
+                "name": "Firebase"
+            },
+            "es": {
+                "name": "Firebase"
+            }
+        }
+    },
+    {
+        "id": 54,
+        "name": "Vercel",
+        "category": "cloud",
+        "icon": "devicon-vercel-plain",
+        "icon_type": "devicon",
+        "brand": "vercel",
+        "sort": 52,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Vercel"
+            },
+            "en": {
+                "name": "Vercel"
+            },
+            "es": {
+                "name": "Vercel"
+            }
+        }
+    },
+    {
+        "id": 55,
+        "name": "Netlify",
+        "category": "cloud",
+        "icon": "devicon-netlify-plain",
+        "icon_type": "devicon",
+        "brand": "netlify",
+        "sort": 53,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Netlify"
+            },
+            "en": {
+                "name": "Netlify"
+            },
+            "es": {
+                "name": "Netlify"
+            }
+        }
+    },
+    {
+        "id": 56,
+        "name": "Kubernetes",
+        "category": "cloud",
+        "icon": "devicon-kubernetes-plain",
+        "icon_type": "devicon",
+        "brand": "kubernetes",
+        "sort": 54,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Kubernetes"
+            },
+            "en": {
+                "name": "Kubernetes"
+            },
+            "es": {
+                "name": "Kubernetes"
+            }
+        }
+    },
+    {
+        "id": 57,
+        "name": "Hetzner Cloud",
+        "category": "cloud",
+        "icon": "fa-cloud",
+        "icon_type": "solid",
+        "brand": "hetzner",
+        "sort": 55,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Hetzner Cloud"
+            },
+            "en": {
+                "name": "Hetzner Cloud"
+            },
+            "es": {
+                "name": "Hetzner Cloud"
+            }
+        }
+    },
+    {
+        "id": 58,
+        "name": "OpenAI",
+        "category": "ai",
+        "icon": "devicon-openai-original",
+        "icon_type": "devicon",
+        "brand": "openai",
+        "sort": 56,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "OpenAI"
+            },
+            "en": {
+                "name": "OpenAI"
+            },
+            "es": {
+                "name": "OpenAI"
+            }
+        }
+    },
+    {
+        "id": 59,
+        "name": "ChatGPT API",
+        "category": "ai",
+        "icon": "devicon-openai-original",
+        "icon_type": "devicon",
+        "brand": "chatgpt",
+        "sort": 57,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "ChatGPT API"
+            },
+            "en": {
+                "name": "ChatGPT API"
+            },
+            "es": {
+                "name": "ChatGPT API"
+            }
+        }
+    },
+    {
+        "id": 60,
+        "name": "Claude (Anthropic)",
+        "category": "ai",
+        "icon": "fa-message",
+        "icon_type": "solid",
+        "brand": "claude",
+        "sort": 58,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "Claude (Anthropic)"
+            },
+            "en": {
+                "name": "Claude (Anthropic)"
+            },
+            "es": {
+                "name": "Claude (Anthropic)"
+            }
+        }
+    },
+    {
+        "id": 61,
+        "name": "Google Gemini",
+        "category": "ai",
+        "icon": "fa-wand-magic-sparkles",
+        "icon_type": "solid",
+        "brand": "gemini",
+        "sort": 59,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "Google Gemini"
+            },
+            "en": {
+                "name": "Google Gemini"
+            },
+            "es": {
+                "name": "Google Gemini"
+            }
+        }
+    },
+    {
+        "id": 62,
+        "name": "TensorFlow",
+        "category": "ai",
+        "icon": "devicon-tensorflow-original",
+        "icon_type": "devicon",
+        "brand": "tensorflow",
+        "sort": 60,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "TensorFlow"
+            },
+            "en": {
+                "name": "TensorFlow"
+            },
+            "es": {
+                "name": "TensorFlow"
+            }
+        }
+    },
+    {
+        "id": 63,
+        "name": "PyTorch",
+        "category": "ai",
+        "icon": "devicon-pytorch-original",
+        "icon_type": "devicon",
+        "brand": "pytorch",
+        "sort": 61,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "PyTorch"
+            },
+            "en": {
+                "name": "PyTorch"
+            },
+            "es": {
+                "name": "PyTorch"
+            }
+        }
+    },
+    {
+        "id": 64,
+        "name": "LangChain",
+        "category": "ai",
+        "icon": "fa-link",
+        "icon_type": "solid",
+        "brand": "langchain",
+        "sort": 62,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "LangChain"
+            },
+            "en": {
+                "name": "LangChain"
+            },
+            "es": {
+                "name": "LangChain"
+            }
+        }
+    },
+    {
+        "id": 65,
+        "name": "Hugging Face",
+        "category": "ai",
+        "icon": "fa-face-smile",
+        "icon_type": "solid",
+        "brand": "huggingface",
+        "sort": 63,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Hugging Face"
+            },
+            "en": {
+                "name": "Hugging Face"
+            },
+            "es": {
+                "name": "Hugging Face"
+            }
+        }
+    },
+    {
+        "id": 66,
+        "name": "Ollama",
+        "category": "ai",
+        "icon": "fa-robot",
+        "icon_type": "solid",
+        "brand": "ollama",
+        "sort": 64,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Ollama"
+            },
+            "en": {
+                "name": "Ollama"
+            },
+            "es": {
+                "name": "Ollama"
+            }
+        }
+    },
+    {
+        "id": 67,
+        "name": "JavaScript",
+        "category": "languages",
+        "icon": "devicon-javascript-plain",
+        "icon_type": "devicon",
+        "brand": "javascript",
+        "sort": 2,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "JavaScript"
+            },
+            "en": {
+                "name": "JavaScript"
+            },
+            "es": {
+                "name": "JavaScript"
+            }
+        }
+    },
+    {
+        "id": 68,
+        "name": "TypeScript",
+        "category": "languages",
+        "icon": "devicon-typescript-plain",
+        "icon_type": "devicon",
+        "brand": "typescript",
+        "sort": 3,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "TypeScript"
+            },
+            "en": {
+                "name": "TypeScript"
+            },
+            "es": {
+                "name": "TypeScript"
+            }
+        }
+    },
+    {
+        "id": 69,
+        "name": "Dart",
+        "category": "languages",
+        "icon": "devicon-dart-plain",
+        "icon_type": "devicon",
+        "brand": "dart",
+        "sort": 5,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "Dart"
+            },
+            "en": {
+                "name": "Dart"
+            },
+            "es": {
+                "name": "Dart"
+            }
+        }
+    },
+    {
+        "id": 70,
+        "name": "Java",
+        "category": "languages",
+        "icon": "devicon-java-plain",
+        "icon_type": "devicon",
+        "brand": "java",
+        "sort": 6,
+        "featured": true,
+        "translations": {
+            "az": {
+                "name": "Java"
+            },
+            "en": {
+                "name": "Java"
+            },
+            "es": {
+                "name": "Java"
+            }
+        }
+    },
+    {
+        "id": 71,
+        "name": "Go",
+        "category": "languages",
+        "icon": "devicon-go-original-wordmark",
+        "icon_type": "devicon",
+        "brand": "go",
+        "sort": 8,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Go"
+            },
+            "en": {
+                "name": "Go"
+            },
+            "es": {
+                "name": "Go"
+            }
+        }
+    },
+    {
+        "id": 72,
+        "name": "Rust",
+        "category": "languages",
+        "icon": "devicon-rust-plain",
+        "icon_type": "devicon",
+        "brand": "rust",
+        "sort": 9,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Rust"
+            },
+            "en": {
+                "name": "Rust"
+            },
+            "es": {
+                "name": "Rust"
+            }
+        }
+    },
+    {
+        "id": 73,
+        "name": "C#",
+        "category": "languages",
+        "icon": "devicon-csharp-plain",
+        "icon_type": "devicon",
+        "brand": "csharp",
+        "sort": 11,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "C#"
+            },
+            "en": {
+                "name": "C#"
+            },
+            "es": {
+                "name": "C#"
+            }
+        }
+    },
+    {
+        "id": 74,
+        "name": "Ruby",
+        "category": "languages",
+        "icon": "devicon-ruby-plain",
+        "icon_type": "devicon",
+        "brand": "ruby",
+        "sort": 12,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Ruby"
+            },
+            "en": {
+                "name": "Ruby"
+            },
+            "es": {
+                "name": "Ruby"
+            }
+        }
+    },
+    {
+        "id": 75,
+        "name": "Swift",
+        "category": "languages",
+        "icon": "devicon-swift-plain",
+        "icon_type": "devicon",
+        "brand": "swift",
+        "sort": 13,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Swift"
+            },
+            "en": {
+                "name": "Swift"
+            },
+            "es": {
+                "name": "Swift"
+            }
+        }
+    },
+    {
+        "id": 76,
+        "name": "Scala",
+        "category": "languages",
+        "icon": "devicon-scala-plain",
+        "icon_type": "devicon",
+        "brand": "scala",
+        "sort": 14,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Scala"
+            },
+            "en": {
+                "name": "Scala"
+            },
+            "es": {
+                "name": "Scala"
+            }
+        }
+    },
+    {
+        "id": 77,
+        "name": "R",
+        "category": "languages",
+        "icon": "devicon-r-original",
+        "icon_type": "devicon",
+        "brand": "r",
+        "sort": 15,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "R"
+            },
+            "en": {
+                "name": "R"
+            },
+            "es": {
+                "name": "R"
+            }
+        }
+    },
+    {
+        "id": 78,
+        "name": "Elixir",
+        "category": "languages",
+        "icon": "devicon-elixir-plain",
+        "icon_type": "devicon",
+        "brand": "elixir",
+        "sort": 16,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Elixir"
+            },
+            "en": {
+                "name": "Elixir"
+            },
+            "es": {
+                "name": "Elixir"
+            }
+        }
+    },
+    {
+        "id": 79,
+        "name": "Lua",
+        "category": "languages",
+        "icon": "devicon-lua-plain",
+        "icon_type": "devicon",
+        "brand": "lua",
+        "sort": 17,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Lua"
+            },
+            "en": {
+                "name": "Lua"
+            },
+            "es": {
+                "name": "Lua"
+            }
+        }
+    },
+    {
+        "id": 80,
+        "name": "Bash",
+        "category": "languages",
+        "icon": "devicon-bash-plain",
+        "icon_type": "devicon",
+        "brand": "bash-lang",
+        "sort": 18,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Bash"
+            },
+            "en": {
+                "name": "Bash"
+            },
+            "es": {
+                "name": "Bash"
+            }
+        }
+    },
+    {
+        "id": 81,
+        "name": "Objective-C",
+        "category": "languages",
+        "icon": "devicon-objectivec-plain",
+        "icon_type": "devicon",
+        "brand": "objectivec",
+        "sort": 19,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Objective-C"
+            },
+            "en": {
+                "name": "Objective-C"
+            },
+            "es": {
+                "name": "Objective-C"
+            }
+        }
+    },
+    {
+        "id": 82,
+        "name": "HTML5",
+        "category": "languages",
+        "icon": "devicon-html5-plain",
+        "icon_type": "devicon",
+        "brand": "html5",
+        "sort": 20,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "HTML5"
+            },
+            "en": {
+                "name": "HTML5"
+            },
+            "es": {
+                "name": "HTML5"
+            }
+        }
+    },
+    {
+        "id": 83,
+        "name": "CSS3",
+        "category": "languages",
+        "icon": "devicon-css3-plain",
+        "icon_type": "devicon",
+        "brand": "css3",
+        "sort": 21,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "CSS3"
+            },
+            "en": {
+                "name": "CSS3"
+            },
+            "es": {
+                "name": "CSS3"
+            }
+        }
+    },
+    {
+        "id": 84,
+        "name": "Haskell",
+        "category": "languages",
+        "icon": "devicon-haskell-plain",
+        "icon_type": "devicon",
+        "brand": "haskell",
+        "sort": 22,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": "Haskell"
+            },
+            "en": {
+                "name": "Haskell"
+            },
+            "es": {
+                "name": "Haskell"
+            }
+        }
+    },
+    {
+        "id": 85,
+        "name": ".NET",
+        "category": "languages",
+        "icon": "devicon-dot-net-plain",
+        "icon_type": "devicon",
+        "brand": "dotnet",
+        "sort": 23,
+        "featured": false,
+        "translations": {
+            "az": {
+                "name": ".NET"
+            },
+            "en": {
+                "name": ".NET"
+            },
+            "es": {
+                "name": ".NET"
+            }
+        }
+    }
 ]

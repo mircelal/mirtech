@@ -7,7 +7,24 @@
         "icon": "fa-cart-shopping",
         "color": "blue",
         "sort": 1,
-        "featured": true
+        "featured": true,
+        "translations": {
+            "az": {
+                "title": "Veb & E-Ticarət",
+                "desc": "WordPress, DLE, Laravel, Vue — korporativ sayt, portal, e-ticarət.",
+                "price": "₼650-dan"
+            },
+            "en": {
+                "title": "Web & E-Commerce",
+                "desc": "WordPress, DLE, Laravel, Vue — corporate sites, portals, e-commerce.",
+                "price": "from ₼650"
+            },
+            "es": {
+                "title": "Web y comercio electrónico",
+                "desc": "WordPress, DLE, Laravel, Vue — sitios corporativos, portales, e-commerce.",
+                "price": "desde ₼650"
+            }
+        }
     },
     {
         "id": 2,
@@ -17,7 +34,24 @@
         "icon": "fa-mobile-screen-button",
         "color": "teal",
         "sort": 2,
-        "featured": true
+        "featured": true,
+        "translations": {
+            "az": {
+                "title": "Mobil Tətbiqlər",
+                "desc": "Android, iOS, Flutter — native performans, müasir UI.",
+                "price": "₼1200-dan"
+            },
+            "en": {
+                "title": "Mobilee Apps",
+                "desc": "Android, iOS, Flutter — native performance, modern UI.",
+                "price": "from ₼1200"
+            },
+            "es": {
+                "title": "Aplicaciones móviles",
+                "desc": "Android, iOS, Flutter — rendimiento nativo, UI moderna.",
+                "price": "desde ₼1200"
+            }
+        }
     },
     {
         "id": 3,
@@ -27,7 +61,24 @@
         "icon": "fa-gears",
         "color": "amber",
         "sort": 3,
-        "featured": true
+        "featured": true,
+        "translations": {
+            "az": {
+                "title": "ERP \/ CRM",
+                "desc": "Anbar, mühasibat, HR, satış — tam müəssisə idarəetməsi.",
+                "price": "₼2000-dan"
+            },
+            "en": {
+                "title": "ERP \/ CRM",
+                "desc": "Warehouse, accounting, HR, sales — full business management.",
+                "price": "from ₼2000"
+            },
+            "es": {
+                "title": "ERP \/ CRM",
+                "desc": "Almacén, contabilidad, RRHH, ventas — gestión empresarial completa.",
+                "price": "desde ₼2000"
+            }
+        }
     },
     {
         "id": 4,
@@ -37,7 +88,24 @@
         "icon": "fa-cloud",
         "color": "purple",
         "sort": 4,
-        "featured": true
+        "featured": true,
+        "translations": {
+            "az": {
+                "title": "Bulud & Server",
+                "desc": "AWS, S3, Google Cloud, Cloudflare, Proxmox, Nextcloud, Linux server.",
+                "price": "Müqavilə"
+            },
+            "en": {
+                "title": "Cloud & Servers",
+                "desc": "AWS, S3, Google Cloud, Cloudflare, Proxmox, Nextcloud, Linux server.",
+                "price": "Custom quote"
+            },
+            "es": {
+                "title": "Nube y servidores",
+                "desc": "AWS, S3, Google Cloud, Cloudflare, Proxmox, Nextcloud, Linux server.",
+                "price": "Presupuesto a medida"
+            }
+        }
     },
     {
         "id": 5,
@@ -47,7 +115,24 @@
         "icon": "fa-desktop",
         "color": "teal",
         "sort": 5,
-        "featured": false
+        "featured": false,
+        "translations": {
+            "az": {
+                "title": "Desktop & Sistem",
+                "desc": "C++, Kotlin, Python — xüsusi proqramlar və inteqrasiyalar.",
+                "price": "Müqavilə"
+            },
+            "en": {
+                "title": "Desktop & Systems",
+                "desc": "C++, Kotlin, Python — custom software and integrations.",
+                "price": "Custom quote"
+            },
+            "es": {
+                "title": "Escritorio y sistemas",
+                "desc": "C++, Kotlin, Python — software e integraciones a medida.",
+                "price": "Presupuesto a medida"
+            }
+        }
     },
     {
         "id": 6,
@@ -57,6 +142,23 @@
         "icon": "fa-palette",
         "color": "gold",
         "sort": 6,
-        "featured": false
+        "featured": false,
+        "translations": {
+            "az": {
+                "title": "Dizayn & UX",
+                "desc": "Tailwind, Figma, HyperOS tipli müasir interfeyslər.",
+                "price": "₼300-dan"
+            },
+            "en": {
+                "title": "Design & UX",
+                "desc": "Tailwind, Figma, HyperOS tipli modern interfaces.",
+                "price": "from ₼300"
+            },
+            "es": {
+                "title": "Diseño y UX",
+                "desc": "Tailwind, Figma, HyperOS tipli interfaces modernas.",
+                "price": "desde ₼300"
+            }
+        }
     }
 ]

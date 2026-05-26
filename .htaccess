@@ -1,0 +1,18 @@
+# Document root layihə kökündədirsə: URL-də /public göstərmə, daxildə public/ işlət
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Köhnə link: /public/projects.php → /projects.php
+    RewriteCond %{THE_REQUEST} \s/+public/ [NC]
+    RewriteRule ^public/(.*)$ /$1 [R=301,L]
+
+    # Artıq public/ altındadırsa toxunma
+    RewriteRule ^public/ - [L]
+
+    # Təmiz URL → public/ faylı
+    RewriteRule ^$ public/ [L]
+    RewriteRule ^(.+)$ public/$1 [L]
+</IfModule>

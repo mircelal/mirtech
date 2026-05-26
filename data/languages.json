@@ -1,0 +1,23 @@
+[
+    {
+        "code": "en",
+        "name": "English",
+        "native": "English",
+        "enabled": true,
+        "default": false
+    },
+    {
+        "code": "az",
+        "name": "Azerbaijani",
+        "native": "Azərbaycan",
+        "enabled": true,
+        "default": true
+    },
+    {
+        "code": "es",
+        "name": "Spanish",
+        "native": "Español",
+        "enabled": true,
+        "default": false
+    }
+]

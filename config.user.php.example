@@ -1,0 +1,9 @@
+<?php
+declare(strict_types=1);
+
+/**
+ * Copy to config.user.php (gitignored) for local overrides.
+ */
+
+// define('ADMIN_PASSWORD_HASH', '...');
+// define('THEME', 'default');

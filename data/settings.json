@@ -1,55 +1,347 @@
 {
-  "site_name": "MirTech",
-  "tagline": "Professional Texnologiya Həlləri",
-  "hero_eyebrow": "15 illik texnologiya şirkəti",
-  "hero_title": "Biznesiniz üçün",
-  "hero_title_highlight": "Güclü Rəqəmsal Sistemlər",
-  "hero_subtitle": "WordPress, Laravel, AWS, Cloudflare, AI inteqrasiyası — veb, bulud, mobil və server. 2010-cu ildən Azərbaycanda.",
-  "stats": [
-    {"value": "150", "suffix": "+", "label": "Tamamlanmış layihə", "color": "blue"},
-    {"value": "15", "suffix": "+", "label": "İl təcrübə", "color": "teal"},
-    {"value": "98", "suffix": "%", "label": "Məmnun müştəri", "color": "amber"},
-    {"value": "24", "suffix": "/7", "label": "Texniki dəstək", "color": "purple"}
-  ],
-  "why": [
-    {"icon": "fa-award", "color": "blue", "title": "15+ İl Təcrübə", "desc": "2010-cu ildən bəri Azərbaycanda proqram təminatı və infrastruktur."},
-    {"icon": "fa-code", "color": "teal", "title": "Full Stack", "desc": "Web, mobil, ERP, bulud — bir komanda, tam həll."},
-    {"icon": "fa-mobile-screen", "color": "amber", "title": "Mobil Birinci", "desc": "Android, iOS, Flutter — native və cross-platform."},
-    {"icon": "fa-server", "color": "purple", "title": "Bulud & Server", "desc": "Proxmox, Nextcloud, Linux, Windows — öz mərkəzlərimizdə."},
-    {"icon": "fa-shield-halved", "color": "teal", "title": "Təhlükəsizlik", "desc": "SSL, backup, 2FA və müasir təhlükəsizlik standartları."},
-    {"icon": "fa-comments", "color": "gold", "title": "Pulsuz Məsləhət", "desc": "İdeyanızı danışın — əvvəlcə məsləhət, sonra qərar."}
-  ],
-  "included": [
-    "Pulsuz hosting (1 il)",
-    "Pulsuz domain",
-    "Korporativ email",
-    "Mobil uyumlu dizayn",
-    "SEO hazırlığı",
-    "24/7 texniki dəstək",
-    "Pulsuz konsultasiya"
-  ],
-  "contact": {
-    "whatsapp": "+994 70 723 21 28",
-    "whatsapp_raw": "994707232128",
-    "email": "info@mirtech.az",
-    "website": "mirtech.az",
-    "website_url": "https://mirtech.az"
-  },
-  "footer_year": 2026,
-  "homepage": {
-    "projects_limit": 6,
-    "technologies_limit": 10,
-    "services_limit": 4
-  },
-  "smtp": {
-    "enabled": false,
-    "host": "smtp.gmail.com",
-    "port": 587,
-    "encryption": "tls",
-    "username": "",
-    "password": "",
-    "from_email": "",
-    "from_name": "MirTech",
-    "notify_email": "info@mirtech.az"
-  }
+    "site_name": "MirTech",
+    "tagline": "Professional Texnologiya Həlləri",
+    "hero_eyebrow": "15 illik texnologiya şirkəti",
+    "hero_title": "Biznesiniz üçün",
+    "hero_title_highlight": "Güclü Rəqəmsal Sistemlər",
+    "hero_subtitle": "WordPress, Laravel, AWS, Cloudflare, AI inteqrasiyası — veb, bulud, mobil və server. 2010-cu ildən Azərbaycanda.",
+    "stats": [
+        {
+            "value": "150",
+            "suffix": "+",
+            "label": "Tamamlanmış layihə",
+            "color": "blue"
+        },
+        {
+            "value": "15",
+            "suffix": "+",
+            "label": "İl təcrübə",
+            "color": "teal"
+        },
+        {
+            "value": "98",
+            "suffix": "%",
+            "label": "Məmnun müştəri",
+            "color": "amber"
+        },
+        {
+            "value": "24",
+            "suffix": "\/7",
+            "label": "Texniki dəstək",
+            "color": "purple"
+        }
+    ],
+    "why": [
+        {
+            "icon": "fa-award",
+            "color": "blue",
+            "title": "15+ İl Təcrübə",
+            "desc": "2010-cu ildən bəri Azərbaycanda proqram təminatı və infrastruktur."
+        },
+        {
+            "icon": "fa-code",
+            "color": "teal",
+            "title": "Full Stack",
+            "desc": "Web, mobil, ERP, bulud — bir komanda, tam həll."
+        },
+        {
+            "icon": "fa-mobile-screen",
+            "color": "amber",
+            "title": "Mobil Birinci",
+            "desc": "Android, iOS, Flutter — native və cross-platform."
+        },
+        {
+            "icon": "fa-server",
+            "color": "purple",
+            "title": "Bulud & Server",
+            "desc": "Proxmox, Nextcloud, Linux, Windows — öz mərkəzlərimizdə."
+        },
+        {
+            "icon": "fa-shield-halved",
+            "color": "teal",
+            "title": "Təhlükəsizlik",
+            "desc": "SSL, backup, 2FA və müasir təhlükəsizlik standartları."
+        },
+        {
+            "icon": "fa-comments",
+            "color": "gold",
+            "title": "Pulsuz Məsləhət",
+            "desc": "İdeyanızı danışın — əvvəlcə məsləhət, sonra qərar."
+        }
+    ],
+    "included": [
+        "Pulsuz hosting (1 il)",
+        "Pulsuz domain",
+        "Korporativ email",
+        "Mobil uyumlu dizayn",
+        "SEO hazırlığı",
+        "24\/7 texniki dəstək",
+        "Pulsuz konsultasiya"
+    ],
+    "contact": {
+        "whatsapp": "+994 70 723 21 28",
+        "whatsapp_raw": "994707232128",
+        "email": "info@mirtech.az",
+        "website": "mirtech.az",
+        "website_url": "https:\/\/mirtech.az"
+    },
+    "footer_year": 2026,
+    "homepage": {
+        "projects_limit": 6,
+        "technologies_limit": 10,
+        "services_limit": 4
+    },
+    "smtp": {
+        "enabled": false,
+        "host": "smtp.gmail.com",
+        "port": 587,
+        "encryption": "tls",
+        "username": "",
+        "password": "",
+        "from_email": "",
+        "from_name": "MirTech",
+        "notify_email": "info@mirtech.az"
+    },
+    "translations": {
+        "az": {
+            "tagline": "Professional Texnologiya Həlləri",
+            "hero_eyebrow": "15 illik texnologiya şirkəti",
+            "hero_title": "Biznesiniz üçün",
+            "hero_title_highlight": "Güclü Rəqəmsal Sistemlər",
+            "hero_subtitle": "WordPress, Laravel, AWS, Cloudflare, AI inteqrasiyası — veb, bulud, mobil və server. 2010-cu ildən Azərbaycanda.",
+            "stats": [
+                {
+                    "value": "150",
+                    "suffix": "+",
+                    "label": "Tamamlanmış layihə",
+                    "color": "blue"
+                },
+                {
+                    "value": "15",
+                    "suffix": "+",
+                    "label": "İl təcrübə",
+                    "color": "teal"
+                },
+                {
+                    "value": "98",
+                    "suffix": "%",
+                    "label": "Məmnun müştəri",
+                    "color": "amber"
+                },
+                {
+                    "value": "24",
+                    "suffix": "\/7",
+                    "label": "Texniki dəstək",
+                    "color": "purple"
+                }
+            ],
+            "why": [
+                {
+                    "icon": "fa-award",
+                    "color": "blue",
+                    "title": "15+ İl Təcrübə",
+                    "desc": "2010-cu ildən bəri Azərbaycanda proqram təminatı və infrastruktur."
+                },
+                {
+                    "icon": "fa-code",
+                    "color": "teal",
+                    "title": "Full Stack",
+                    "desc": "Web, mobil, ERP, bulud — bir komanda, tam həll."
+                },
+                {
+                    "icon": "fa-mobile-screen",
+                    "color": "amber",
+                    "title": "Mobil Birinci",
+                    "desc": "Android, iOS, Flutter — native və cross-platform."
+                },
+                {
+                    "icon": "fa-server",
+                    "color": "purple",
+                    "title": "Bulud & Server",
+                    "desc": "Proxmox, Nextcloud, Linux, Windows — öz mərkəzlərimizdə."
+                },
+                {
+                    "icon": "fa-shield-halved",
+                    "color": "teal",
+                    "title": "Təhlükəsizlik",
+                    "desc": "SSL, backup, 2FA və müasir təhlükəsizlik standartları."
+                },
+                {
+                    "icon": "fa-comments",
+                    "color": "gold",
+                    "title": "Pulsuz Məsləhət",
+                    "desc": "İdeyanızı danışın — əvvəlcə məsləhət, sonra qərar."
+                }
+            ],
+            "included": [
+                "Pulsuz hosting (1 il)",
+                "Pulsuz domain",
+                "Korporativ email",
+                "Mobil uyumlu dizayn",
+                "SEO hazırlığı",
+                "24\/7 texniki dəstək",
+                "Pulsuz konsultasiya"
+            ]
+        },
+        "en": {
+            "tagline": "Professional Technology Solutions",
+            "hero_eyebrow": "15 years of technology expertise",
+            "hero_title": "For your business",
+            "hero_title_highlight": "Powerful Digital Systems",
+            "hero_subtitle": "WordPress, Laravel, AWS, Cloudflare, AI integration — web, cloud, mobile and servers. in Azerbaijan since 2010.",
+            "stats": [
+                {
+                    "value": "150",
+                    "suffix": "+",
+                    "label": "Completed projects",
+                    "color": "blue"
+                },
+                {
+                    "value": "15",
+                    "suffix": "+",
+                    "label": "Years of experience",
+                    "color": "teal"
+                },
+                {
+                    "value": "98",
+                    "suffix": "%",
+                    "label": "Satisfied clients",
+                    "color": "amber"
+                },
+                {
+                    "value": "24",
+                    "suffix": "\/7",
+                    "label": "Technical support",
+                    "color": "purple"
+                }
+            ],
+            "why": [
+                {
+                    "icon": "fa-award",
+                    "color": "blue",
+                    "title": "15+ Years of Experience",
+                    "desc": "Software and infrastructure in Azerbaijan since 2010."
+                },
+                {
+                    "icon": "fa-code",
+                    "color": "teal",
+                    "title": "Full Stack",
+                    "desc": "Web, mobile, ERP, cloud — one team, end-to-end solutions."
+                },
+                {
+                    "icon": "fa-mobile-screen",
+                    "color": "amber",
+                    "title": "Mobilee First",
+                    "desc": "Android, iOS, Flutter — native and cross-platform."
+                },
+                {
+                    "icon": "fa-server",
+                    "color": "purple",
+                    "title": "Cloud & Servers",
+                    "desc": "Proxmox, Nextcloud, Linux, Windows — in our own data centers."
+                },
+                {
+                    "icon": "fa-shield-halved",
+                    "color": "teal",
+                    "title": "Security",
+                    "desc": "SSL, backups, 2FA and modern security standards."
+                },
+                {
+                    "icon": "fa-comments",
+                    "color": "gold",
+                    "title": "Free Consultation",
+                    "desc": "Share your idea — consultation first, then decisions."
+                }
+            ],
+            "included": [
+                "Free hosting (1 year)",
+                "Free domain",
+                "Business email",
+                "Mobilee-responsive design",
+                "SEO setup",
+                "24\/7 technical support",
+                "Free consultation"
+            ]
+        },
+        "es": {
+            "tagline": "Soluciones tecnológicas profesionales",
+            "hero_eyebrow": "15 años de experiencia tecnológica",
+            "hero_title": "Para su negocio",
+            "hero_title_highlight": "Sistemas digitales potentes",
+            "hero_subtitle": "WordPress, Laravel, AWS, Cloudflare, AI integración — web, nube, móvil y servidores. en Azerbaiyán desde 2010.",
+            "stats": [
+                {
+                    "value": "150",
+                    "suffix": "+",
+                    "label": "Proyectos completados",
+                    "color": "blue"
+                },
+                {
+                    "value": "15",
+                    "suffix": "+",
+                    "label": "Años de experiencia",
+                    "color": "teal"
+                },
+                {
+                    "value": "98",
+                    "suffix": "%",
+                    "label": "Clientes satisfechos",
+                    "color": "amber"
+                },
+                {
+                    "value": "24",
+                    "suffix": "\/7",
+                    "label": "Soporte técnico",
+                    "color": "purple"
+                }
+            ],
+            "why": [
+                {
+                    "icon": "fa-award",
+                    "color": "blue",
+                    "title": "Más de 15 años de experiencia",
+                    "desc": "Software e infraestructura en Azerbaiyán desde 2010."
+                },
+                {
+                    "icon": "fa-code",
+                    "color": "teal",
+                    "title": "Full Stack",
+                    "desc": "Web, móvil, ERP, nube — un equipo, solución integral."
+                },
+                {
+                    "icon": "fa-mobile-screen",
+                    "color": "amber",
+                    "title": "Mobile first",
+                    "desc": "Android, iOS, Flutter — nativo y multiplataforma."
+                },
+                {
+                    "icon": "fa-server",
+                    "color": "purple",
+                    "title": "Nube y servidores",
+                    "desc": "Proxmox, Nextcloud, Linux, Windows — en nuestros propios centros de datos."
+                },
+                {
+                    "icon": "fa-shield-halved",
+                    "color": "teal",
+                    "title": "Seguridad",
+                    "desc": "SSL, copias de seguridad, 2FA y estándares modernos de seguridad."
+                },
+                {
+                    "icon": "fa-comments",
+                    "color": "gold",
+                    "title": "Consulta gratuita",
+                    "desc": "Cuente su idea — primero asesoramiento, luego decisiones."
+                }
+            ],
+            "included": [
+                "Hosting gratuito (1 año)",
+                "Dominio gratuito",
+                "Correo corporativo",
+                "Diseño adaptable a móvil",
+                "Preparación SEO",
+                "Soporte técnico 24\/7",
+                "Consulta gratuita"
+            ]
+        }
+    }
 }

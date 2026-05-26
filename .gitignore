@@ -12,10 +12,19 @@ desktop.ini
 # Müraciət məlumatları (şəxsi data)
 data/leads.json
 
-# Yüklənmiş layihə şəkilləri (serverdə saxlanır)
-uploads/projects/*
-!uploads/projects/.htaccess
+# Yüklənmiş layihə şəkilləri
+public/uploads/projects/*
+!public/uploads/projects/.gitkeep
 
-# Lokal konfiqurasiya (gələcək)
+# Köhnə yol (köçürmədən qalıbsa)
+uploads/projects/*
+!uploads/projects/.gitkeep
+
+# Lokal konfiqurasiya
+config.user.php
 config.local.php
 .env
+
+# Köçürmə / tərcümə backup-ları
+*.bak-*
+data/*.bak*

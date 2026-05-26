@@ -41,11 +41,17 @@ cd mirtech
 cp data/leads.json.example data/leads.json
 ```
 
-1. Copy the project into your web root (e.g. `www/mirtech`)
-2. Open the site in your browser (e.g. `http://mirtech.local/`)
-3. **Admin:** `/admin/login.php`  
-   - Default password: **`admin1234`** (change before production!)
-4. Configure contact & SMTP under **Admin → Settings**
+1. Point your web server **document root** to `mirtech/public/` (see Laragon below).
+2. Open the site (e.g. `http://mirtech.local/`).
+3. **Admin:** `/admin/login.php` — default password **`admin1234`** (change before production!).
+4. Configure contact & SMTP under **Admin → Settings**.
+
+**Laragon (tövsiyə olunur):** Sağ klik layihə → **Web root** → `...\mirtech\public`  
+Belə olanda URL-lər təmiz olur: `https://mirtech.local/projects.php?lang=es` (`/public/` yox).
+
+Layihə kökü docroot qalsa belə, kök `.htaccess` URL-də `/public` göstərmir; köhnə `/public/...` linkləri avtomatik 301 ilə düzəlir.
+
+**«Index of /» görürsünüzsə:** Document root hələ `mirtech/` qovluğundadır — kökdəki `.htaccess` + `index.php` işləməlidir; ən yaxşısı web root = `public`.
 
 Generate a new password hash:
 
@@ -53,7 +59,7 @@ Generate a new password hash:
 php -r "echo password_hash('YOUR_PASSWORD', PASSWORD_BCRYPT);"
 ```
 
-Put the result in `config.php` as `ADMIN_PASSWORD_HASH`.
+Put the result in `config.user.php` as `define('ADMIN_PASSWORD_HASH', '...');` (copy from `config.user.php.example`).
 
 ---
 
@@ -61,23 +67,37 @@ Put the result in `config.php` as `ADMIN_PASSWORD_HASH`.
 
 ```
 mirtech/
-├── index.php              # Homepage
-├── projects.php           # Project list
-├── project.php            # Project detail
-├── technologies.php       # Tech stack
-├── calculator.php         # Price calculator
-├── config.php             # Config & helpers
-├── api/lead.php           # Lead API (POST JSON)
-├── admin/                 # Admin panel
-├── assets/css|js/         # Styles & scripts
-├── data/                  # JSON “database”
-│   ├── projects.json
-│   ├── technologies.json
-│   ├── services.json
-│   ├── settings.json
-│   └── leads.json         # gitignored (privacy)
-└── uploads/projects/      # Project images
+├── public/                 # Document root (only this is web-exposed)
+│   ├── index.php           # Stubs → core Controllers
+│   ├── projects.php, project.php, …
+│   ├── api.php             # ?action=lead
+│   ├── admin/*.php         # Proxies to core/admin
+│   ├── assets/             # CSS/JS (user-editable)
+│   └── uploads/projects/   # Uploaded images
+├── core/                   # Logic, admin, API (protected by .htaccess)
+│   ├── bootstrap.php, helpers.php, Controllers/
+│   └── admin/
+├── views/                  # HTML templates (user-editable)
+├── data/                   # JSON CMS (protected by .htaccess)
+├── config.php              # Requires core/bootstrap.php
+└── config.user.php         # Local overrides (gitignored)
 ```
+
+### User vs core (updates)
+
+| You may edit | Do not edit (core updates overwrite) |
+|--------------|--------------------------------------|
+| `views/**` | `core/**` |
+| `public/assets/**` | `core/**`, `public/*.php` stubs |
+| `public/uploads/**` | `data/**` (use admin panel) |
+| `config.user.php` | Controllers, `core/bootstrap.php` |
+
+`git pull` updates `core/` and `public/*.php` stubs; your `views/` and `public/assets/` stay intact.
+
+### Wrong deployment (shared hosting)
+
+- **Correct:** document root = `public/` only; `core/`, `data/`, `views/` sit **above** `public_html`.
+- **Wrong:** copying the entire `mirtech/` tree into `public_html/` — then `core/` and `data/` might be reachable. `.htaccess` in `core/` and `data/` denies access as a last line of defense; still avoid exposing `views/` and `config.user.php`.
 
 ---
 
@@ -109,11 +129,42 @@ mirtech/
 ## Calculator lead flow
 
 1. User submits the form → **Send**
-2. Lead stored via `POST /api/lead.php`
+2. Lead stored via `POST /api.php?action=lead` (legacy: `/api/lead.php`)
 3. Admin receives email (if SMTP is enabled)
 4. User sees **“Request sent”** + optional WhatsApp button
 
 ---
+
+## Multilingual (i18n)
+
+Public site languages: **English (default)**, **Azerbaijani**, **Spanish**.
+
+| Mechanism | Location |
+|-----------|----------|
+| Language config | `data/languages.json` |
+| UI strings | `data/lang/en.json`, `az.json`, `es.json` |
+| Content translations | `translations.{lang}` on `projects.json`, `services.json`, `settings.json`, `technologies.json` |
+| Runtime API | `core/includes/i18n.php` — `t()`, `localized()`, `url()`, `langUrl()` |
+
+**URL:** `?lang=az` or `?lang=es` (stored in session). Default language omits the query parameter.
+
+**Admin:** **Dillər** (enable/default languages), **Tərcümələr** (UI keys), per-language tabs on projects/services/settings forms.
+
+**One-time migration** (existing installs):
+
+```bash
+php scripts/migrate-i18n.php
+```
+
+This copies legacy top-level text into `translations.az` (and seeds EN/ES), creates lang packs, and backs up large JSON files.
+
+To auto-fill **English and Spanish** content from your Azerbaijani texts (settings, services, all projects):
+
+```bash
+php scripts/translate-content.php
+```
+
+Creates `.bak-translate-*` backups. Edit fine-tuning per language in **Admin → Layihələr / Xidmətlər / Parametrlər** (language tabs) or **Tərcümələr** (UI strings).
 
 ## JSON data files
 
@@ -127,10 +178,37 @@ mirtech/
 
 ---
 
+## PageSpeed / performans
+
+- **Critical CSS** (hero + header) — ilk boyama tez
+- **Async CSS:** Google Fonts, Font Awesome, Devicon (yalnız lazım olanda), `typography-az` (AZ)
+- **`site.css` preload** + uzunmüddətli cache (`?v=filemtime`)
+- **JS `defer`:** `site.js`, kalkulyator, layihə detalı
+- **Şəkillər:** `width`/`height`, `lazy` / `fetchpriority="high"` (LCP)
+- **`.htaccess`:** gzip/brotli, `Cache-Control` statik fayllar üçün
+
+**Laragon:** Apache-də `mod_deflate` və `mod_expires` aktiv olsun. Production-da **HTTPS** və Web root = `public/`.
+
+[PageSpeed Insights](https://pagespeed.web.dev/) ilə `https://mirtech.local/` yoxlayın.
+
+---
+
+## SEO (Google və ağıllı axtarış)
+
+- **Canonical**, `meta robots`, **Open Graph**, **Twitter Card**
+- **JSON-LD**: Organization, WebSite, WebPage, BreadcrumbList, layihə üçün CreativeWork
+- **hreflang** (az / en / es) + **XML sitemap** (`/sitemap.xml`) + **robots.txt**
+- Admin → **Parametrlər → SEO**: OG şəkil, Google doğrulama, sosial linklər
+
+`contact.website_url` düzgün doldurun (məs. `https://mirtech.az`) — canonical və sitemap bunun üzərindən qurulur.
+
+---
+
 ## Security
 
 - Change the default admin password before going live
-- `data/` is protected via `.htaccess`
+- `data/` and `core/` are protected via `.htaccess` (`Require all denied`)
+- Document root must be `public/`
 - Do not commit `leads.json` (personal data) or SMTP passwords
 - Use HTTPS in production
 
