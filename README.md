@@ -162,4 +162,4 @@ Pull requests are welcome. By contributing, you agree that your changes will be 
 
 ## Author
 
-MirTech — technology solutions · [mirtech.az](https://mirtech.az)
+**[mircelal](https://github.com/mircelal)** — MirTech · [mirtech.az](https://mirtech.az)
